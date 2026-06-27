@@ -1,0 +1,635 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&family=Poppins:wght@400;600;700&display=swap');
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+@source '../js/**/*.js';
+
+@theme {
+    --font-sans: 'Raleway', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+/* ── Prevent horizontal scrollbar sitewide ── */
+html, body {
+    overflow-x: hidden;
+}
+
+/* ── Methodology page child-heading ── */
+.child-heading {
+    background: white;
+    padding: 3px 8px 7px 8px;
+    margin-bottom: 21px;
+    font-weight: 600;
+    margin-top: 20px !important;
+    display: inline-block;
+    margin-bottom: 10px !important;
+    font-size: 30px !important;
+    font-weight: 700 !important;
+}
+
+/* ── Methodology page text shadow for button ── */
+.methodology-btn-text-shadow {
+    text-shadow: 0px 2px 0px #8A8C8E !important;
+}
+
+/* ── Methodology page image widths ── */
+.methodology-image-63 {
+    width: 63%;
+    margin: 0 auto;
+}
+
+.methodology-image-51 {
+    width: 51%;
+    margin: 0 auto;
+}
+
+/* ── Methodology page hypotheses section overlay ── */
+.hypotheses-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.hypotheses-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hypothesis-number {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: #000 !important;
+    border-radius: 50%;
+    padding: 6px 15px;
+    margin-left: -64px;
+    margin-right: 17px;
+}
+
+.hypothesis-number:nth-of-type(2) {
+    padding: 6px 13px;
+}
+
+@media (max-width: 768px) {
+    .bg-methodology {
+        padding: 20px 10px !important;
+    }
+
+    .text1raw.bg-white {
+        padding: 20px 15px;
+    }
+
+    .hypotheses-section {
+        padding: 25px 15px !important;
+    }
+
+    .hypothesis-text {
+        font-size: 18px !important;
+        line-height: 28px !important;
+    }
+
+    .conclusion-text {
+        font-size: 20px !important;
+    }
+
+    .hypothesis-number {
+        margin-left: 0;
+        margin-right: 10px;
+        display: inline-block;
+    }
+}
+
+/* ── Methodology page numbered hypothesis badges ── */
+.methodology-content p {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    padding-bottom: 12px;
+    color: #1f2937;
+}
+.methodology-content p.hypothesis {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding-bottom: 16px;
+}
+.methodology-content p.hypothesis .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    height: 42px;
+    background: #3d5228;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-family: 'Raleway', sans-serif;
+}
+@media (min-width: 768px) {
+    .methodology-content p { font-size: 16px; }
+    .methodology-content p.hypothesis .badge { min-width: 48px; height: 48px; font-size: 20px; }
+}
+@media (min-width: 1024px) {
+    .methodology-content p { font-size: 17px; }
+}
+
+/* ── About page rich-text content paragraphs ── */
+.about-content p {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.4;
+    padding-bottom: 12px;
+    text-align: justify;
+    color: #1f2937;
+}
+.about-content a {
+    color: #000;
+    text-decoration: underline;
+}
+@media (min-width: 480px) {
+    .about-content p { font-size: 16px; }
+}
+@media (min-width: 768px) {
+    .about-content p { font-size: 18px; }
+}
+@media (min-width: 1024px) {
+    .about-content p { font-size: 20px; }
+}
+
+/* ── Vision heading green highlight (pseudo-element) ── */
+.vision-heading {
+    position: relative;
+    z-index: 1;
+    display: inline;
+}
+.vision-heading::after {
+    content: '';
+    background: #c8f9b7;
+    width: 98%;
+    height: 11px;
+    position: absolute;
+    left: 6px;
+    bottom: 11px;
+    z-index: -1;
+}
+
+/* ── Background images (cannot be done with Tailwind utilities) ── */
+.bg-video-section {
+    background-image: url('/images/video-p-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-character-building {
+    background-image: url('/images/character-building-bg.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.footer-bg {
+    background-image: url('/images/footer_black_1.webp');
+}
+
+.banner-top-book-gras-2 {
+    background-image: url('/images/banner-top-book-gras-2.webp');
+    background-size: cover;
+    background-position: 80%;
+    background-repeat: no-repeat;
+}
+
+/* Free sample — individual book image hover via :has() */
+.fs-card .tb-img,
+.fs-card .tg-img {
+    transition: transform 0.35s ease, filter 0.35s ease, opacity 0.35s ease;
+}
+.fs-card:has(.textbook-link:hover) .tb-img {
+    transform: scale(1.25) translateY(-12px);
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.35));
+}
+.fs-card:has(.textbook-link:hover) .tg-img {
+    opacity: 0;
+}
+.fs-card:has(.teacher-link:hover) .tg-img {
+    transform: scale(1.25) translateY(-12px);
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.35));
+}
+.fs-card:has(.teacher-link:hover) .tb-img {
+    opacity: 0;
+}
+
+.books-img-bg-section {
+    background-image: url('/images/books-img-bg.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 100px;
+    margin: 0;
+}
+
+.testimonials-bg-section {
+    background-image: url('/images/tree-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.faq-section {
+    background-image: url('/images/faq-bg.png');
+    background-color: #ecfde8;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+.bg-adjest {
+    position: relative;
+}
+
+.bg-methodology {
+    background-image: url('/images/methadolgy_bg.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 40px;
+    border-radius: 20px;
+}
+
+.metha_1 {
+    background-image: url('/images/metha_1.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 1051px) {
+    .custom_class {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1051px;
+    }
+}
+
+/* ── Methodology image blocks ── */
+.block-image-image_Y3wibb {
+    width: 60%;
+    margin: 0 auto;
+}
+.block-image-image_Y3wibb .image-content__image-wrapper {
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+.block-image-image_Y3wibb .image-content__image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.block-image-image_fzpWXN {
+    width: 55%;
+    margin: 0 auto;
+}
+.block-image-image_fzpWXN .image-content__image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.block-image-image_fzpWXN .image-content__image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ── Methodology hypothesis items (admin rich-text output) ── */
+.hypothesis-item {
+    display: flex;
+    align-items: flex-start;
+}
+.hypothesis-num {
+    flex-shrink: 0;
+}
+.hypothesis-body {
+    flex: 1;
+}
+.hypothesis-body p {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+}
+
+.font-comic-regular {
+    font-family: 'Comic Sans MS', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 24px;
+    margin-bottom: 30px;
+    line-height: 36px;
+    text-align: justify;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+}
+
+.bg-adjest::after {
+    content: '';
+    position: absolute;
+    top: 35%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 205px;
+    height: 400px;
+    background-image: url('/images/girl-in-pink.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 991px) {
+    .bg-adjest::after {
+        display: none;
+    }
+}
+
+.free-sample-section {
+    background-image: url('/images/slider-books-bg.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.book_1920_1 {
+    background-image: url('/images/book_1920_1.png');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    width: 100%;
+    min-height: 400px;
+}
+
+/* ── Brochure image (object-position top + align-self not in Tailwind) ── */
+.sec-bg {
+    width: 160px;
+    height: 320px;
+    margin-top: 15px;
+    margin-left: 16px;
+    margin-right: 30px;
+    flex-shrink: 0;
+    object-fit: contain;
+    object-position: top;
+    align-self: flex-start;
+}
+
+@media (max-width: 767px) {
+    .sec-bg {
+        width: 51px;
+        height: 65px;
+        margin-top: 10px;
+        margin-left: 8px;
+        margin-right: 15px;
+    }
+}
+
+/* ── Section heading: Moral Social Emotional ── */
+.heading-bg-gr::after {
+    content: '';
+    background: #c8f9b7;
+    width: 98%;
+    height: 11px;
+    position: absolute;
+    left: 6px;
+    bottom: 11px;
+    z-index: -1;
+}
+.heading-bg-gr {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    padding: 1px 6px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #000;
+}
+
+@media (min-width: 768px) {
+    .heading-bg-gr {
+        font-size: 36px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .heading-bg-gr {
+        font-size: 50px;
+    }
+}
+
+/* text-shadow cannot be done with Tailwind */
+.section-subheading {
+    text-align: center;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.9);
+    color: #95C28F;
+    font-weight: 600;
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .section-subheading {
+        font-size: 36px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-subheading {
+        font-size: 50px;
+    }
+}
+
+/* @media responsive margin cannot be done without a custom Tailwind breakpoint */
+.section-paragraph {
+    text-align: center;
+    color: #222222;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .section-paragraph {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .section-paragraph {
+        font-size: 15px;
+        margin: 0px 125px;
+    }
+}
+
+/* ── Contact section ── */
+.contact-form-adjest {
+    background-image: url('/images/contact-form-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-top: 55px;
+    padding-left: 59px;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.contact-field {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.contact-field .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 14px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+.contact-field input,
+.contact-field textarea {
+    width: 93%;
+    padding: 10px 10px 10px 60px;
+    border: 1px solid #ddd;
+    background-color: white !important;
+    border-radius: 4px;
+    color: #333;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    outline: none;
+}
+
+.contact-field textarea {
+    resize: none;
+    height: 100px;
+}
+
+.contact-field.textfild .icon {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.contact-pen-resize {
+    width: 22px;
+    height: auto;
+}
+
+.form-image {
+    width: 60px;
+    height: auto;
+}
+
+@media (max-width: 767px) {
+    .form-image {
+        width: 30px;
+    }
+}
+
+.contact-submit-btn {
+    background: #A8F58D;
+    color: #000;
+    border: none;
+    width: 93%;
+    padding: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    transition: background 0.2s;
+}
+
+.contact-submit-btn:hover {
+    background: #8fe070;
+}
+
+/* ── Utility font classes ── */
+.font-raleway-bold {
+    font-family: 'Raleway' !important;
+    font-weight: 800 !important;
+}
+
+.responsive-cl {
+    font-size: 18px !important;
+}
+
+/* ── text1raw block: centered on screen ── */
+.text1raw {
+    max-width: 1100px;
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.text1raw .child-heading {
+    display: block;
+    width: 100%;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.text1raw p {
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.4;
+    padding-bottom: 12px;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-weight: normal;
+}
+
+/* ── New Subject page content paragraphs ── */
+.new-subject-content p {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.7;
+    padding-bottom: 14px;
+    text-align: justify;
+    color: #1f2937;
+}
+
+/* ── New Subject page bullet list items ── */
+.new-subject-content li span {
+    font-family: 'Comic Sans MS', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: normal !important;
+    line-height: 1.7;
+    color: #1f2937;
+}
+
+.new-subject-bg {
+    background-image: url("/images/bg_jpg.webp");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
