@@ -6,25 +6,23 @@
 
     <div class="new-subject-bg">
 
-        <div class="flex items-start justify-center pt-4" style="min-height: 100vh;">
+        <div class="flex items-start justify-center pt-4 min-h-screen">
             <div class="section-block w-full">
 
                 {{-- ── Title Box ── --}}
-                <div class="max-w-4xl mx-auto border-4 p-8 rounded-lg mt-4 shadow-[0px_4px_6px_rgba(0,0,0,0.9)]" style="background-color: white !important;">
-                    <div class="text-center">
-                        <h1 class="font-raleway-extrabold text-3xl font-bold mb-6" style="color: black !important;">
-                            {{ $page?->title ?? '"Character Building" as an Independent Subject' }}
-                        </h1>
-                    </div>
+                <div class="text-center mt-4">
+                    <button class="font-raleway-extrabold custom-btn page_character-building rounded-[14px]">
+                        {{ $page?->title ?? '"Character Building" as an Independent Subject' }}
+                    </button>
                 </div>
 
                 {{-- ── Launching Heading ── --}}
-                <div class="text1raw">
-                    <p class="text-center"><span class="child-heading font-raleway-bold">{!! nl2br(e($launchingHeading)) !!}</span></p>
+                <div class="flex justify-center my-6">
+                    <span class="child-heading font-raleway-bold launching-heading">{!! nl2br(e($launchingHeading)) !!}</span>
                 </div>
 
                 <div>
-                    <div class="new-subject-content" style="max-width: 900px; margin: 0 auto; padding: 60px 24px 180px 24px;">
+                    <div class="new-subject-content max-w-[900px] mx-auto px-6 pt-[60px]">
 
                         {{-- ── Four Intro Paragraphs ── --}}
                         <p>{{ $para1 }}</p>
@@ -33,20 +31,19 @@
                         <p>{{ $para4 }}</p>
 
                         {{-- ── Building Image ── --}}
-                        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 36px 0;">
+                        <div class="flex flex-wrap gap-5 justify-center my-9">
                             <img src="{{ $buildingImage }}" alt="Building"
-                                 style="width: 90%; min-width: 340px; max-width: 900px; height: 520px; object-fit: cover; border-radius: 156px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                                 class="w-[90%] min-w-[340px] max-w-[900px] h-[520px] object-cover rounded-[156px] shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
                         </div>
+                        <hr class="border-0 border-t-2 border-gray-200 mb-8">
 
-                        <hr style="border: none; border-top: 2px solid #e5e7eb; margin-bottom: 32px;">
-
-                        {{-- ── Approach Text + Bullet List ── --}}
+                        {{-- ── Approach Text ── --}}
                         <p>{{ $approachText }}</p>
 
-                        <ul style="list-style: none; padding: 0; margin: 0 0 32px 0;">
+                        <ul class="list-none p-0 mb-8">
                             @foreach($bulletItems as $item)
-                                <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-                                    <span style="width: 10px; height: 10px; min-width: 10px; background-color: #3d5228; border-radius: 50%; margin-top: 8px; display: inline-block;"></span>
+                                <li class="flex items-start gap-3 mb-[55px]">
+                                    <span class="w-[10px] h-[10px] min-w-[10px] bg-[#3d5228] rounded-full mt-2 inline-block flex-shrink-0"></span>
                                     <span>{{ $item }}</span>
                                 </li>
                             @endforeach
@@ -61,7 +58,7 @@
                         {{-- ── Girls Image ── --}}
                         <div class="grid place-items-center mb-6">
                             <img src="{{ $girlsImage }}" alt="Girls in classroom"
-                                 style="width: 90%; min-width: 340px; max-width: 900px; height: 520px; object-fit: cover; border-radius: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                                 class="w-[90%] min-w-[340px] max-w-[900px] h-[520px] object-cover shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
                         </div>
 
                     </div>
