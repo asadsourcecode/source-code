@@ -13,8 +13,7 @@
         <div class="flex items-start justify-center pt-[30px] sm:pt-[40px] md:pt-[50px]">
 
             {{-- Button wrapper --}}
-            <div class="min-w-0 flex-1 max-w-[180px] sm:max-w-[240px] md:max-w-[300px]"
-                style="text-align: justify !important;">
+            <div class="min-w-0 flex-1 max-w-[180px] sm:max-w-[240px] md:max-w-[300px]">
                 <button class="font-['Raleway',sans-serif] font-extrabold bg-white text-black
                     text-[16px] sm:text-[22px] md:text-[28px] lg:text-[36px]
                     px-[16px] sm:px-[28px] md:px-[40px] lg:px-[58px]

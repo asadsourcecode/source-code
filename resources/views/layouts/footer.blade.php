@@ -5,7 +5,7 @@
     $youtubeUrl  = $siteSettings?->youtube_url   ?? '#';
 @endphp
 
-<footer class="footer-bg text-white bg-cover bg-top bg-no-repeat">
+<footer class="footer-bg text-white bg-cover bg-top bg-no-repeat relative" style="margin-top: -70px; padding-top: 80px;">
 
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
 

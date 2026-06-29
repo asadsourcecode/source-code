@@ -32,9 +32,11 @@
                     <div class="grid__item-inner grid__item-inner--innertextraw">
                         <div class="row justify-content-center align-items-center">
                             <div class="innerText col-10 col-sm-10 col-md-10 col-lg-8">
+                                <div class="flex justify-center">
+                                    <span class="child-heading" style="font-family: Poppins, sans-serif !important; font-size: 25px !important;">{{ $prefaceHeading }}</span>
+                                </div>
                                 <div class="text1raw">
-                                    <p class="text-center"><span class="child-heading" style="font-family:Poppins, sans-serif; font-size: 25px;">{{ $prefaceHeading }}</span></p>
-                                    <p class="text-center text-[24px] leading-[1.4] pb-3 font-['Comic_Sans_MS',sans-serif] font-normal">{{ $prefaceSubtext }}</p>
+                                    <p>{{ $prefaceSubtext }}</p>
                                 </div>
                             </div>
                         </div>
@@ -68,30 +70,20 @@
                                     <div class="font-comic-regular hypothesis-item" style="margin-top: 120px;">
                                         <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 15px; opacity: .9; margin-left: -64px; margin-right: 17px;">1.</span><div class="hypothesis-body">{!! $hypothesis1 !!}</div>
                                     </div>
-                                @else
-                                    <p class="font-comic-regular" style="margin-top: 120px;">
-                                        <span style="background-color: white !important; border-radius: 50%; padding: 6px 15px; opacity: .9; margin-left: -64px; margin-right: 17px;">1.</span>By strengthening school-aged children's conceptual understanding of right/constructive and wrong/destructive and developing their moral and analytical skills, which include the ability of moral reasoning and ethical judgment, they will develop better ethics and be boosted with a <span class="font-comic-bold" style="color:#234E7E">stronger religious foundation</span> in life.
-                                    </p>
+                                    <br><br>
                                 @endif
 
                                 @if($hypothesis2)
                                     <div class="font-comic-regular hypothesis-item">
                                         <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-left: -64px; margin-right: 17px;">2.</span><div class="hypothesis-body">{!! $hypothesis2 !!}</div>
                                     </div>
-                                @else
-                                    <p class="font-comic-regular">
-                                        <span style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-left: -64px; margin-right: 17px;">2.</span>By training their emotional, social, and moral skills, they can better master destructive thoughts and feelings through self-reflection, self-evaluation, and self-control, which leads to more<span class="font-comic-bold" style="color:#234E7E"> mindful and pro-social behaviour.</span>
-                                    </p>
+                                    <br><br>
                                 @endif
 
                                 @if($hypothesis3)
                                     <div class="font-comic-regular hypothesis-item">
                                         <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-left: -64px; margin-right: 17px;">3.</span><div class="hypothesis-body">{!! $hypothesis3 !!}</div>
                                     </div>
-                                @else
-                                    <p class="font-comic-regular">
-                                        <span style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-left: -64px; margin-right: 17px;">3.</span>By providing them with knowledge of <span style="font-style: italic !important;">Dīn,</span> which will help them stay God-fearing and conscious about the purpose of life - with its never-ending choices and tests, they are supported in recognising the voice of their conscience and remain in touch with their Self, i.e. reflective consciousness. A better psychological insight, Islāmic guidance and enlightenment, reminders, and motivation will collectively make them more competent and confident in making righteous and constructive decisions when facing life's challenges. This<span class="font-comic-bold" style="color:#234E7E"> will minimise destructive choices,</span> trivial errors and wrong-doing.
-                                    </p>
                                 @endif
 
                                 <p class="font-comic-regular" style="color:#626363;">{{ $hypothesesClose }}</p>
@@ -116,7 +108,7 @@
                 <!-- Main Objective Section -->
                 <div class="col-lg-12 mb-4 mb-sm-0 align-self- custom-blk-innertextraw_TdYQ8r">
                     <div class="grid__item-inner grid__item-inner--innertextraw">
-                        <div class="text1raw max-w-[1000px] mx-auto pt-8 px-5">
+                        <div class="flex justify-center max-w-[1000px] mx-auto py-10 px-5">
                             <p class="text-center text-2xl leading-[1.4] pb-3 font-['Comic_Sans_MS',sans-serif] font-normal">
                                 {{ $objectiveText }}
                                 <span class="font-bold text-[#636466]">
@@ -128,7 +120,7 @@
                 </div>
 
                 <!-- Image Block 2 -->
-                <div class="col-lg-12 mb-4 mb-sm-0 align-self-center custom-blk-image_fzpWXN">
+                <div class="col-lg-12 mb-4 mb-sm-0 align-self-center custom-blk-image_fzpWXN pb-[106px]">
                     <div class="grid__item-inner grid__item-inner--image">
                         <div class="aos-init aos-animate" data-aos="" data-aos-delay="1200">
                             <div class="block-image image-content__image-container block-image-image_fzpWXN">

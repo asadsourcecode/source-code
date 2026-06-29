@@ -465,10 +465,19 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 @forelse($features as $feature)
+                    @php
+                        $featureImageDefaults = [
+                            'feature-homeschooling'      => 'images/homeschooling_medium.png',
+                            'feature-counselling-therapy'=> 'images/mind-body-spirit.webp',
+                        ];
+                        $featureImg = $feature->featured_image
+                            ? asset('admin-storage/' . $feature->featured_image)
+                            : (isset($featureImageDefaults[$feature->slug]) ? asset($featureImageDefaults[$feature->slug]) : null);
+                    @endphp
                     <div class="flex flex-col rounded-[25px] overflow-hidden text-center mb-5 bg-white shadow-[-1px_-1px_3px_rgba(0,0,0,0.2),4px_5px_5px_rgba(0,0,0,0.76)]">
 
-                        @if($feature->featured_image)
-                            <img src="{{ asset('admin-storage/' . $feature->featured_image) }}"
+                        @if($featureImg)
+                            <img src="{{ $featureImg }}"
                                  alt="{{ $feature->title }}" class="w-full h-auto">
                         @endif
 
@@ -584,22 +593,45 @@
                         <div class="w-full lg:w-10/12">
 
                             @forelse($faqs as $i => $faq)
-                                <details class="group bg-white my-8 rounded-[1rem] border-2 border-[#a19c9c] p-4 {{ $i === 0 ? 'shadow-[0px_4px_8px_rgba(2,10,6,1)]' : '' }}">
-                                    <summary class="flex items-start gap-2 cursor-pointer font-bold text-[13px] md:text-[14px] text-[#000] list-none select-none">
-                                        <span class="shrink-0 font-bold">{{ $i + 1 }}.</span>
-                                        <span class="shrink-0 pt-[2px]">
-                                            <i class="fa-solid fa-plus text-[11px] md:text-[12px] group-open:hidden"></i>
-                                            <i class="fa-solid fa-minus text-[11px] md:text-[12px] hidden group-open:inline"></i>
+                                <div class="faq-item bg-white my-8 rounded-[1rem] border-2 border-[#a19c9c] {{ $i === 0 ? 'shadow-[0px_4px_8px_rgba(2,10,6,1)]' : '' }} overflow-hidden">
+                                    <button class="faq-trigger w-full flex items-center gap-3 px-6 py-7 cursor-pointer text-left">
+                                        <span class="shrink-0 font-bold text-[18px] md:text-[20px] text-[#000]">{{ $i + 1 }}.</span>
+                                        <span class="flex-1 font-bold text-[18px] md:text-[20px] text-[#000]">{{ $faq->question }}</span>
+                                        <span class="faq-icon shrink-0 w-6 h-6 flex items-center justify-center text-gray-600">
+                                            <i class="fa-solid fa-plus text-[14px]"></i>
                                         </span>
-                                        <span>{{ $faq->question }}</span>
-                                    </summary>
-                                    <div class="pl-6 pt-3 text-[13px] md:text-[14px] text-gray-700 leading-relaxed">
-                                        {{ $faq->answer }}
+                                    </button>
+                                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                                        <div class="px-6 pb-6 text-[16px] md:text-[18px] text-gray-700 leading-relaxed">
+                                            {{ $faq->answer }}
+                                        </div>
                                     </div>
-                                </details>
+                                </div>
                             @empty
                                 <p class="text-center text-gray-400 text-sm py-8">No FAQs yet. Add them in the admin panel.</p>
                             @endforelse
+
+                            <script>
+                                document.querySelectorAll('.faq-trigger').forEach(function (btn) {
+                                    btn.addEventListener('click', function () {
+                                        var item    = btn.closest('.faq-item');
+                                        var answer  = item.querySelector('.faq-answer');
+                                        var icon    = item.querySelector('.faq-icon i');
+                                        var isOpen  = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+
+                                        // Close all
+                                        document.querySelectorAll('.faq-answer').forEach(function (a) { a.style.maxHeight = '0px'; });
+                                        document.querySelectorAll('.faq-icon i').forEach(function (ic) {
+                                            ic.className = 'fa-solid fa-plus text-[12px]';
+                                        });
+
+                                        if (!isOpen) {
+                                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                                            icon.className = 'fa-solid fa-minus text-[12px]';
+                                        }
+                                    });
+                                });
+                            </script>
 
                         </div>
                     </div>
@@ -609,6 +641,11 @@
         </div>
     </section>
 
+    {{-- ── Hijab Girl Banner ── --}}
+    <section class="w-full relative" style="background-image: url('{{ asset('images/hijab-girl.webp') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 700px;">
+        <div style="width: 100%; height: 100%; position: absolute; background-image: url('{{ asset('images/sofia-adeem.webp') }}'); background-size: 50%; background-repeat: no-repeat; background-position: center center; left: 0; top: 0;"></div>
+    </section>
+
     {{-- ── Contact Us ── --}}
     <section class="py-0 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -616,7 +653,7 @@
             <div class="flex flex-col lg:flex-row items-stretch">
 
                 {{-- Left: book image --}}
-                <div class="lg:w-1/2 flex items-end">
+                <div class="lg:w-1/2 flex items-center">
                     <img src="{{ asset('images/contact-book.png') }}" alt="Contact" class="w-full h-auto">
                 </div>
 
@@ -676,17 +713,17 @@
     <section class="py-16 bg-[#f7f3e8]">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
 
-            <h2 class="text-[24px] md:text-[28px] lg:text-[36px] font-extrabold text-[#24372f] mb-2">{{ $homePage?->meta('partners_heading', 'We Collaborate With a') }}</h2>
+            <h2 class="mb-2"><span class="heading-bg-gr normal-case font-extrabold text-[24px] md:text-[28px] lg:text-[36px] text-[#24372f]">{{ $homePage?->meta('partners_heading', 'We Collaborate With a') }}</span></h2>
             <h3 class="text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-gray-600 mb-10">{{ $homePage?->meta('partners_subheading', 'Number of Leading Schools and Institutes') }}</h3>
 
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center">
                 @forelse($partners as $partner)
                     <a href="{{ $partner->website_url ?? '#' }}"
                        {{ $partner->website_url ? 'target="_blank" rel="noopener"' : '' }}
-                       class="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                       class="">
                         @if($partner->logo)
                             <img src="{{ asset('admin-storage/' . $partner->logo) }}"
-                                 alt="{{ $partner->name }}" class="h-16 w-auto object-contain mx-auto">
+                                 alt="{{ $partner->name }}" class="h-28 w-auto object-contain mx-auto">
                         @else
                             <span class="text-[13px] font-semibold text-gray-500">{{ $partner->name }}</span>
                         @endif
@@ -700,7 +737,7 @@
     </section>
 
     {{-- ── Blog ── --}}
-    <section class="py-16 bg-white">
+    <section class="py-16" style="background-image: url('{{ asset('images/monthly-blog-post.webp') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="flex items-center justify-center gap-3 mb-10">
@@ -739,7 +776,7 @@
     </section>
 
     {{-- ── Promo Banner ── --}}
-    <div class="w-full">
+    <div class="w-full pb-[70px]">
         @if($homePage?->meta('promo_banner'))
             <img src="{{ asset('admin-storage/' . $homePage->meta('promo_banner')) }}" alt="Character Building Course" class="w-full h-auto block">
         @else
