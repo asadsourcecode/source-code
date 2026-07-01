@@ -3,7 +3,7 @@
 @section('title', ($page?->meta_title ?: $page?->title ?: "Teacher's Training") . ' | ICE')
 
 @section('content')
-    <div class="teachers-training-bg min-h-screen">
+    <div class="teachers-training-bg ">
 
         {{-- Title Button --}}
         <div class="flex justify-center pt-[30px] sm:pt-[40px] md:pt-[50px]">
@@ -31,7 +31,7 @@
                     <span class="child-heading">We offer two types of training:</span>
                 </div>
 
-                <p class="tt-body-text">1) Customised Teacher's Training to institutions through Source Code Academia led by Mr.Sahil Adeem.</p>
+                <p class="tt-body-text" style="padding-top: 18px;">1) Customised Teacher's Training to institutions through Source Code Academia led by Mr.Sahil Adeem.</p>
 
                 <p class="tt-body-text">2) Teacher Onboarding Training, which is compulsory for home-school teachers, online teachers, and other educators without a formal degree in Education or relevant teaching experience. Our training programme will ensure that both Intellectual Property (IP) as well as General Data Protection Regulation (GDPR) are respected and principally not breached.</p>
 
@@ -40,7 +40,7 @@
                     <span class="child-heading">1. Customised Teacher's Training through Source Code Academia:</span>
                 </div>
 
-                <p class="tt-body-text">Raising the standards of thinking and getting the teacher to be a role model is only the beginning. Harbouring the right mindset for teaching this non-traditional subject, building competency, and enhancing the functional capacity of the whole staff is a prime duty of the institutions or educators responsible for building good character within their students.</p>
+                <p class="tt-body-text" style="padding-top: 20px;">Raising the standards of thinking and getting the teacher to be a role model is only the beginning. Harbouring the right mindset for teaching this non-traditional subject, building competency, and enhancing the functional capacity of the whole staff is a prime duty of the institutions or educators responsible for building good character within their students.</p>
 
                 <p class="tt-body-text">"Source Code Academy" is a professional, international training company that has joined hands with ICE Publishers to take up this venture.</p>
 
@@ -64,10 +64,10 @@
                 <p class="tt-body-text">We can also offer customised courses to build or fine-tune the competencies required by the faculty to reach the desired results.</p>
 
                 {{-- Source Code Academia row --}}
-                <div class="flex items-center justify-between gap-6 mt-4 mb-4">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 mt-4 mb-4">
                     <p class="tt-body-text flex-1">For customised Teacher's Training Programmes for schools led by Sahil Adeem, contact us or Source Code Academy's website directly.</p>
                     <div class="flex-shrink-0">
-                        <img src="{{ asset('images/source-code-academia.png') }}" alt="Source Code Academia" class="max-h-[80px] w-auto">
+                        <img src="{{ asset('images/source-code-academia.png') }}" alt="Source Code Academia" class="max-h-[60px] sm:max-h-[80px] w-auto">
                     </div>
                 </div>
 
@@ -76,19 +76,22 @@
                     <span class="child-heading">2. ICE Publishers Teachers' Training are booked here.</span>
                 </div>
 
-                <p class="tt-body-text">✏ <a href="{{ route('about') }}" class="charcoal-bluish-txt">Contact Us</a>. Don't forget to mention <strong class="charcoal-bluish-txt">"Teachers' Training"</strong> in subject.</p>
+                <p class="tt-body-text">✏ <a href="{{ route('about') }}" style="color: rgba(var(--color-body-text-rgb), 0.7);">Contact Us</a>. Don't forget to mention <strong class="charcoal-bluish-txt">"Teachers' Training"</strong> in subject.</p>
 
                 <p class="tt-body-text">Educators wanting to teach our Character Building Course professionally in a classroom setup (whether virtual or physical classroom) must enrol in a short Teacher Training Programme. This will also give them access to supervision and a license to teach our digital books online from our platform.</p>
 
-                <p class="tt-body-text">For more information, see <a href="{{ route('online-classes') }}" class="charcoal-bluish-txt"><strong>Online Teachers</strong></a>.</p>
+                <p class="tt-body-text">For more information, see <a href="{{ route('online-classes') }}" style="color: rgba(var(--color-body-text-rgb), 0.7);"><strong>Online Teachers</strong></a>.</p>
 
             </div>
         </div>
 
-        {{-- Bottom image --}}
-        <div class="container mx-auto px-4 mt-10 mb-10">
+    </div>
+
+    {{-- Bottom image --}}
+    <div style="background-color: #E6D6E0;">
+        <div class="container mx-auto px-4 py-10">
             <img src="{{ asset('images/meeting.webp') }}" alt="Meeting" class="w-full h-auto">
         </div>
-
     </div>
+
 @endsection

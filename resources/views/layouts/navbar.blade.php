@@ -7,7 +7,7 @@
 <div id="drawer-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
 
 <!-- Mobile Drawer -->
-<div id="mobile-drawer" class="fixed top-0 left-0 h-full w-[85%] max-w-[340px] bg-white z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+<div id="mobile-drawer" class="fixed top-0 left-0 h-full w-[85%] max-w-[340px] bg-white z-50 overflow-y-auto lg:hidden" style="transform: translateX(-100%); transition: transform 0.3s ease-in-out;">
 
     <!-- Close Button -->
     <div class="flex justify-end p-4 border-b border-gray-200">
@@ -30,9 +30,14 @@
                 $isAudioStories      = str_replace(' ', '', strtolower($item->title)) === 'audiostories';
                 $titleSlug           = preg_replace('/[^a-z]/', '', strtolower($item->title));
                 $isTeachersTraining  = $titleSlug === 'teacherstraining';
+                $isContact           = str_contains(strtolower($item->title), 'contact');
             @endphp
 
-            @if ($isTeachersTraining)
+            @if ($isContact)
+                <a href="{{ route('contact') }}" class="flex items-center px-5 py-4 text-[15px] font-medium text-gray-900 border-b border-gray-200 hover:bg-gray-50">
+                    {{ $item->title }}
+                </a>
+            @elseif ($isTeachersTraining)
                 <a href="{{ route('teachers-training') }}" class="flex items-center px-5 py-4 text-[15px] font-medium text-gray-900 border-b border-gray-200 hover:bg-gray-50">
                     {{ $item->title }}
                 </a>
@@ -48,7 +53,7 @@
                 <a href="{{ route('homeschooling') }}" class="flex items-center px-5 py-4 text-[15px] font-medium text-gray-900 border-b border-gray-200 hover:bg-gray-50">
                     {{ $item->title }}
                 </a>
-            @elseif ($hasChildren || $isIntro || $isBooks)
+            @elseif ($hasChildren || $isIntro || $isBooks || str_replace(' ', '', strtolower($item->title)) === 'counselling')
                 <div class="drawer-accordion">
                     <button class="drawer-accordion-btn w-full flex items-center justify-between px-5 py-4 text-[15px] font-medium text-gray-900 border-b border-gray-200 hover:bg-gray-50">
                         <span>{{ $item->title }}</span>
@@ -62,6 +67,8 @@
                         @elseif ($isBooks)
                             <a href="{{ route('ebooks') }}" class="block px-8 py-3 text-[14px] text-gray-700 border-b border-gray-100 hover:bg-gray-100">E-books</a>
                             <a href="{{ route('hard-copies') }}" class="block px-8 py-3 text-[14px] text-gray-700 border-b border-gray-100 hover:bg-gray-100">Hard Copies</a>
+                        @elseif(str_replace(' ', '', strtolower($item->title)) === 'counselling')
+                            <a href="{{ route('logotherapy') }}" class="block px-8 py-3 text-[14px] text-gray-700 border-b border-gray-100 hover:bg-gray-100">Logotherapy</a>
                         @else
                             @foreach ($item->children as $child)
                                 <a href="{{ $child->url }}" class="block px-8 py-3 text-[14px] text-gray-700 border-b border-gray-100 hover:bg-gray-100">
@@ -217,7 +224,14 @@
 
                     @foreach ($headerMenu as $item)
 
-                        @if(preg_replace('/[^a-z]/', '', strtolower($item->title)) === 'teacherstraining')
+                        @if(str_contains(strtolower($item->title), 'contact'))
+                            <a
+                                href="{{ route('contact') }}"
+                                class="inline-flex flex-shrink-0 whitespace-nowrap items-center gap-1 rounded-[30px] border-2 border-[#C9F9B6] px-3 py-[6px] text-[15px] font-medium text-white transition-all duration-200 hover:bg-[#C9F9B6] hover:text-black"
+                            >
+                                <span>{{ $item->title }}</span>
+                            </a>
+                        @elseif(preg_replace('/[^a-z]/', '', strtolower($item->title)) === 'teacherstraining')
                             <a
                                 href="{{ route('teachers-training') }}"
                                 class="inline-flex flex-shrink-0 whitespace-nowrap items-center gap-1 rounded-[30px] border-2 border-[#C9F9B6] px-3 py-[6px] text-[15px] font-medium text-white transition-all duration-200 hover:bg-[#C9F9B6] hover:text-black"
@@ -245,10 +259,10 @@
                             >
                                 <span>{{ $item->title }}</span>
                             </a>
-                        @elseif(strtolower($item->title) === 'intro')
-                            <div class="relative group">
+                        @elseif(str_replace(' ', '', strtolower($item->title)) === 'counselling')
+                            <div class="relative desktop-dropdown-parent">
                                 <a
-                                    href="{{ $item->url }}"
+                                    href="{{ route('counselling') }}"
                                     class="inline-flex flex-shrink-0 whitespace-nowrap items-center gap-1 rounded-[30px] border-2 border-[#C9F9B6] px-3 py-[6px] text-[15px] font-medium text-white transition-all duration-200 hover:bg-[#C9F9B6] hover:text-black"
                                 >
                                     <span>{{ $item->title }}</span>
@@ -256,7 +270,27 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </a>
-                                <div class="absolute left-0 top-full z-50 invisible group-hover:visible pt-5">
+                                <div class="desktop-dropdown">
+                                    <div class="bg-[#232323] min-w-[200px] px-5 py-3">
+                                        <a href="{{ route('logotherapy') }}" class="relative inline-block text-white text-[14px] font-medium
+                                            after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0
+                                            after:bg-[#C9F9B6] after:transition-all after:duration-300
+                                            hover:after:w-full">Logotherapy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @elseif(strtolower($item->title) === 'intro')
+                            <div class="relative desktop-dropdown-parent">
+                                <a
+                                    href="{{ route('introduction') }}"
+                                    class="inline-flex flex-shrink-0 whitespace-nowrap items-center gap-1 rounded-[30px] border-2 border-[#C9F9B6] px-3 py-[6px] text-[15px] font-medium text-white transition-all duration-200 hover:bg-[#C9F9B6] hover:text-black"
+                                >
+                                    <span>{{ $item->title }}</span>
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </a>
+                                <div class="desktop-dropdown">
                                     <div class="bg-[#232323] min-w-[200px] px-5 py-3">
                                         <a href="{{ route('new-subject') }}" class="relative inline-block text-white text-[14px] font-medium
                                             after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0
@@ -266,7 +300,7 @@
                                 </div>
                             </div>
                         @elseif(strtolower($item->title) === 'books')
-                            <div class="relative group">
+                            <div class="relative desktop-dropdown-parent">
                                 <a
                                     href="{{ $item->url }}"
                                     class="inline-flex flex-shrink-0 whitespace-nowrap items-center gap-1 rounded-[30px] border-2 border-[#C9F9B6] px-3 py-[6px] text-[15px] font-medium text-white transition-all duration-200 hover:bg-[#C9F9B6] hover:text-black"
@@ -276,7 +310,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </a>
-                                <div class="absolute left-0 top-full z-50 invisible group-hover:visible pt-5">
+                                <div class="desktop-dropdown">
                                     <div class="bg-[#3B1A07] min-w-[200px] px-5 py-3 flex flex-col gap-3 items-start">
                                         <a href="{{ route('ebooks') }}" class="relative inline-block text-white text-[14px] font-medium
                                             after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0

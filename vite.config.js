@@ -23,6 +23,7 @@ export default defineConfig(({ command }) => ({
 
     server: {
         origin: 'http://localhost:5173',
+        cors: true,
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },

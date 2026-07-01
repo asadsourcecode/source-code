@@ -6,20 +6,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.getElementById('drawer-close');
 
     function openDrawer() {
-        drawer.classList.remove('-translate-x-full');
-        overlay.classList.remove('hidden');
+        drawer.style.transform = 'translateX(0)';
+        overlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
 
     function closeDrawer() {
-        drawer.classList.add('-translate-x-full');
-        overlay.classList.add('hidden');
+        drawer.style.transform = 'translateX(-100%)';
+        overlay.style.display = 'none';
         document.body.style.overflow = '';
     }
 
     if (menuButton) menuButton.addEventListener('click', openDrawer);
     if (closeBtn)   closeBtn.addEventListener('click', closeDrawer);
     if (overlay)    overlay.addEventListener('click', closeDrawer);
+
+    // Desktop nav dropdowns
+    document.querySelectorAll('.desktop-dropdown-parent').forEach(function (parent) {
+        var dropdown = parent.querySelector('.desktop-dropdown');
+        if (!dropdown) return;
+        parent.addEventListener('mouseenter', function () { dropdown.style.display = 'block'; });
+        parent.addEventListener('mouseleave', function () { dropdown.style.display = ''; });
+    });
 
     // Accordion: + / - toggle for items with children
     document.querySelectorAll('.drawer-accordion-btn').forEach(function (btn) {

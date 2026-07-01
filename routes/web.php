@@ -15,5 +15,9 @@ Route::get('/audio-stories', [PageController::class, 'audioStories'])->name('aud
 Route::get('/teachers-training', [PageController::class, 'teachersTraining'])->name('teachers-training');
 Route::get('/online-classes', [PageController::class, 'onlineClasses'])->name('online-classes');
 Route::get('/homeschooling', [PageController::class, 'homeschooling'])->name('homeschooling');
+Route::get('/pages/introduction', [PageController::class, 'introduction'])->name('introduction');
+Route::get('/logotherapy', [PageController::class, 'logotherapy'])->name('logotherapy');
+Route::get('/counselling', [PageController::class, 'counselling'])->name('counselling');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 Route::get('/pages/{slug}', [PageController::class, 'show'])->name('page.show');

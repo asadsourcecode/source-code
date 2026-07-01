@@ -37,7 +37,7 @@ class MenuItem extends Model
         }
 
         if ($this->page) {
-            return '/' . $this->page->slug;
+            return $this->page->slug === 'home' ? '/' : '/' . $this->page->slug;
         }
 
         return '#';

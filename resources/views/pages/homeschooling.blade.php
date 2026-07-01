@@ -10,7 +10,7 @@
 
             <div class="flex items-start">
 
-                <div class="mr-[25px]">
+                <div class="mr-[10px] sm:mr-[25px]">
                     <button class="font-['Raleway',sans-serif] font-extrabold bg-white text-black
                         text-[16px] sm:text-[22px] md:text-[28px] lg:text-[36px]
                         px-[16px] sm:px-[28px] md:px-[40px] lg:px-[58px]
@@ -24,10 +24,10 @@
                     </button>
                 </div>
 
-                <div class="ml-[25px]">
+                <div class="ml-[10px] sm:ml-[25px]">
                     <img src="{{ asset('images/schoolicon.webp') }}"
                         alt="Homeschooling"
-                        class="h-[48px] sm:h-[64px] md:h-[86px] w-auto">
+                        class="h-[36px] sm:h-[64px] md:h-[86px] w-auto">
                 </div>
 
             </div>
@@ -43,15 +43,19 @@
         </div>
 
         {{-- Helping hand image --}}
-        <div class="flex justify-center my-10">
-            <img src="{{ asset('images/helpinghand.webp') }}" alt="Helping Hand" class="w-auto h-auto">
+        <div class="flex justify-center my-8 sm:my-10">
+            <img src="{{ asset('images/helpinghand.webp') }}" alt="Helping Hand" class="w-[90%] sm:w-[75%] md:w-[60%] lg:w-auto max-w-full h-auto">
         </div>
 
 
         {{-- Text row with laptop via after effect --}}
-        <div class="flex justify-center my-10">
+        <div class="flex justify-center my-8 sm:my-10">
             <div class="lap-image w-11/12 md:w-10/12 lg:w-8/12">
                 <p class="lap-center-text">The digital books are reserved for our professional online teachers to ensure quality and supervision</p>
+                {{-- Laptop image visible only on mobile, hidden on md+ where ::after takes over --}}
+                <div class="flex justify-center mt-4 md:hidden">
+                    <img src="{{ asset('images/claptop.webp') }}" alt="Laptop" class="w-[70%] sm:w-[50%] h-auto">
+                </div>
             </div>
         </div>
 
