@@ -323,7 +323,7 @@
 
             {{-- Prev arrow --}}
             <button id="fs-prev"
-                class="absolute left-0 top-[50%] -translate-y-1/2 z-10 w-[60px] h-[88px] bg-no-repeat bg-contain bg-center border-0 bg-transparent cursor-pointer"
+                class="hidden sm:block absolute left-0 top-[50%] -translate-y-1/2 z-10 w-[60px] h-[88px] bg-no-repeat bg-contain bg-center border-0 bg-transparent cursor-pointer"
                 style="background-image: url('{{ asset('images/left-arrow.png') }}'); top: 124px;">
             </button>
 
@@ -385,8 +385,8 @@
 
             {{-- Next arrow --}}
             <button id="fs-next"
-                class="absolute right-0 z-10 w-[50px] h-[100px] bg-no-repeat bg-contain bg-center border-0 bg-transparent cursor-pointer"
-                style="background-image: url('{{ asset('images/right-arrow.png') }}'); top: 139px; right: -40px;">
+                class="hidden sm:block absolute right-0 z-10 w-[60px] h-[88px] bg-no-repeat bg-contain bg-center border-0 bg-transparent cursor-pointer"
+                style="background-image: url('{{ asset('images/right-arrow.png') }}'); top: 80px;">
             </button>
 
         </div>
@@ -447,6 +447,24 @@
             current = current >= maxIdx ? 0 : current + 1;
             render();
         });
+
+        var touchStartX = 0;
+        var touchEndX   = 0;
+        track.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        track.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            var diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    current = current >= maxIdx ? 0 : current + 1;
+                } else {
+                    current = current <= 0 ? maxIdx : current - 1;
+                }
+                render();
+            }
+        }, { passive: true });
     })();
     </script>
 

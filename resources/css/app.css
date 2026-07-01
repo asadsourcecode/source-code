@@ -18,9 +18,39 @@
     --color-body-text-rgb: 18, 18, 18;
 }
 
+/* ── Introduction Page ── */
+.intro-bg {
+    background-image: url("/images/intro_bg_1.webp");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.intro-highlight {
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: white;
+    text-underline-offset: 3px;
+}
+
 /* ── Prevent horizontal scrollbar sitewide ── */
 html, body {
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Comic Sans MS', sans-serif !important;
+    color: black;
+}
+
+/* ── Desktop nav dropdowns ── */
+.desktop-dropdown {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 9999;
+    padding-top: 20px;
+}
+.desktop-dropdown-parent:hover .desktop-dropdown {
+    display: block !important;
 }
 
 /* ── Methodology page text shadow for button ── */
@@ -106,8 +136,9 @@ html, body {
     font-weight: normal;
     font-size: 14px;
     line-height: 1.4;
-    padding-bottom: 12px;
-    text-align: justify;
+    padding-top: 10px;
+    padding-bottom: 16px;
+    text-align: start;
     color: #1f2937;
 }
 .about-content a {
@@ -208,6 +239,62 @@ html, body {
     position: relative;
 }
 
+.bg-methodology li,
+.metha_1 li {
+    text-align: start;
+}
+
+@media (max-width: 639px) {
+    .bg-methodology .custom-btn {
+        padding: 0 !important;
+    }
+    .metha_1 {
+        background-image: url('/images/WhatsApp_Image_2024-10-24_at_14.36.08%20%281%29.webp') !important;
+    }
+    .metha_1 li,
+    .metha_1 li p,
+    .metha_1 li span,
+    .metha_1 li * {
+        font-size: 14px !important;
+        font-weight: normal !important;
+        line-height: 1.5 !important;
+        margin-bottom: 10px !important;
+        text-align: start !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.methodology-heading {
+    font-size: 14px !important;
+}
+
+@media (min-width: 640px) {
+    .methodology-heading { font-size: 18px !important; }
+}
+
+@media (min-width: 768px) {
+    .methodology-heading { font-size: 22px !important; }
+}
+
+@media (min-width: 1024px) {
+    .methodology-heading { font-size: 25px !important; }
+}
+
+.metha_1 .font-comic-regular {
+    font-family: 'Comic Sans MS', sans-serif !important;
+    font-weight: normal !important;
+    line-height: 1.5;
+    text-align: start;
+}
+
+.metha_1 .hypothesis-num {
+    font-family: initial !important;
+    font-size: initial !important;
+    font-weight: initial !important;
+    line-height: normal !important;
+}
+
 .bg-methodology {
     background-image: url('/images/methadolgy_bg.webp');
     background-size: cover;
@@ -219,7 +306,7 @@ html, body {
 
 .metha_1 {
     background-image: url('/images/metha_1.webp');
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
@@ -276,9 +363,17 @@ html, body {
 .font-comic-regular {
     font-family: 'Comic Sans MS', sans-serif !important;
     font-weight: normal !important;
-    font-size: 26px;
-    line-height: 36px;
-    text-align: justify;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .font-comic-regular { font-size: 18px; }
+}
+
+@media (min-width: 1024px) {
+    .font-comic-regular { font-size: 26px; }
 }
 
 .bg-adjest::after {
@@ -464,8 +559,6 @@ html, body {
     max-width: 1100px;
     width: 90%;
     margin: 40px auto;
-    margin-left: 24px;
-    text-align: center;
 }
 
 .text1raw .child-heading {
@@ -476,12 +569,12 @@ html, body {
 }
 
 .text1raw p {
-    font-size: 20px;
-    text-align: justify;
+    font-size: 24px !important;
+    text-align: left;
     line-height: 1.4;
-    padding-bottom: 12px;
-    font-family: 'Comic Sans MS', sans-serif;
-    font-weight: normal;
+    padding: 0 40px 12px 40px;
+    font-family: 'Comic Sans MS', sans-serif !important;
+    font-weight: 500 !important;
 }
 
 .text1raw li {
@@ -499,7 +592,7 @@ html, body {
     font-size: 22px;
     line-height: 1.7;
     padding-bottom: 14px;
-    text-align: justify;
+    text-align: center;
     color: #1f2937;
 }
 
@@ -579,11 +672,19 @@ body .lap-image p.hs-body-text-center {
 .lap-center-text {
     font-family: 'Comic Sans MS', sans-serif !important;
     font-weight: normal !important;
-    font-size: 25px !important;
+    font-size: 14px !important;
     text-align: center !important;
     line-height: 1.4 !important;
     padding-bottom: 12px !important;
     margin: 0 0 10px !important;
+}
+
+@media (min-width: 640px) {
+    .lap-center-text { font-size: 18px !important; }
+}
+
+@media (min-width: 1024px) {
+    .lap-center-text { font-size: 25px !important; }
 }
 
 .hs-body-text-center {
@@ -619,21 +720,37 @@ body .lap-image p.hs-body-text-center {
 .hs-body-text {
     font-family: 'Comic Sans MS', sans-serif;
     font-weight: normal;
-    font-size: 25px;
-    text-align: justify;
+    font-size: 14px;
+    text-align: center;
     line-height: 1.4;
     padding-bottom: 12px;
     margin: 0 0 10px;
 }
 
+@media (min-width: 640px) {
+    .hs-body-text { font-size: 18px; }
+}
+
+@media (min-width: 1024px) {
+    .hs-body-text { font-size: 25px; }
+}
+
 .hs-link {
-    font-size: 25px;
+    font-size: 14px;
     text-decoration: underline;
     color: rgba(0, 0, 0, 0.7);
     text-underline-offset: 4px;
     text-decoration-color: rgba(0, 0, 0, 0.4);
     text-decoration-thickness: 1px;
     transition: color 0.3s ease-in;
+}
+
+@media (min-width: 640px) {
+    .hs-link { font-size: 18px; }
+}
+
+@media (min-width: 1024px) {
+    .hs-link { font-size: 25px; }
 }
 
 .hs-link:hover {
@@ -659,8 +776,33 @@ body .lap-image p.hs-body-text-center {
     margin-bottom: 10px !important;
     display: inline-block;
     font-family: 'Raleway', sans-serif !important;
-    font-size: 30px !important;
+    font-size: 18px !important;
     font-weight: 700 !important;
+}
+
+@media (min-width: 640px) {
+    .child-heading { font-size: 22px !important; }
+}
+
+@media (min-width: 1024px) {
+    .child-heading { font-size: 30px !important; }
+}
+
+@media (max-width: 639px) {
+    .stars_bg .child-heading {
+        background: white;
+        padding: 0px 0px 1px 11px;
+        margin-top: 20px !important;
+        margin-bottom: 10px !important;
+        margin-left: 0 !important;
+        display: inline-block;
+        font-family: 'Raleway', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+    }
+    .stars_bg .set-heading-ebook {
+        margin-left: 0 !important;
+    }
 }
 
 .launching-heading {
@@ -671,19 +813,27 @@ body .lap-image p.hs-body-text-center {
 .tt-body-text {
     font-family: 'Comic Sans MS', sans-serif;
     font-weight: normal;
-    font-size: 24px;
-    text-align: justify;
+    font-size: 14px;
+    text-align: start;
     line-height: 1.4;
     padding-bottom: 12px;
     margin: 0 0 10px;
 }
 
+@media (min-width: 640px) {
+    .tt-body-text { font-size: 18px; }
+}
+
+@media (min-width: 1024px) {
+    .tt-body-text { font-size: 24px; }
+}
+
 
 .teachers-training-bg {
     background-image: url("/images/teacherstraining.webp");
-    background-size: 100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 0px;
 }
 
@@ -712,6 +862,15 @@ body .lap-image p.hs-body-text-center {
     background-position: top;
     background-repeat: no-repeat;
     padding-top: 50px;
+}
+
+.logotherapy-bg {
+    background-image: url("/images/logoth.webp"), url("/images/bg_f6c9be88-cb8b-49cf-84a5-7ca712d6b31f.webp");
+    background-size: 100% auto, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top center, center;
+    padding-top: 50px;
+    padding-bottom: 40px;
 }
 
 .pages-heading-bottom-border {
@@ -763,7 +922,7 @@ body .lap-image p.hs-body-text-center {
     font-family: 'Comic Sans MS', sans-serif;
     font-weight: normal;
     font-size: 16px;
-    text-align: justify;
+    text-align: start;
     line-height: 1.4;
     padding-bottom: 12px;
     margin: 0 0 10px;
@@ -781,6 +940,15 @@ body .lap-image p.hs-body-text-center {
     font-size: 16px;
     line-height: 1.4;
     margin-bottom: 10px;
+}
+
+.teachers-training-bg .oc-list li {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.teachers-training-bg .oc-list li::marker {
+    font-weight: bold;
 }
 
 @media (min-width: 640px) {
@@ -814,6 +982,47 @@ body .lap-image p.hs-body-text-center {
 .text1raw ul {
     list-style-type: disc;
     padding-left: 1.5rem;
+}
+
+.shutter_bg .text1raw ul {
+    padding-left: 0;
+}
+
+.shutter_bg .text1raw ul li {
+    padding-left: 0;
+}
+
+.shutter_bg .text1raw p {
+    font-size: 24px !important;
+    text-align: left;
+    line-height: 1.4;
+    padding: 0 40px 12px 0px !important;
+    font-family: 'Comic Sans MS', sans-serif !important;
+    font-weight: 500 !important;
+}
+
+@media (max-width: 639px) {
+    .stars_bg .text1raw p {
+        font-size: 16px !important;
+        text-align: left;
+        line-height: 1.4;
+        padding: 0 40px 12px 0px !important;
+        padding-left: 0px !important;
+        margin-left: 0px !important;
+        font-family: 'Comic Sans MS', sans-serif !important;
+        font-weight: 500 !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .stars_bg .text1raw p {
+        font-size: 24px !important;
+        text-align: left;
+        line-height: 1.4;
+        padding: 0 40px 12px 0px;
+        font-family: 'Comic Sans MS', sans-serif !important;
+        font-weight: 500 !important;
+    }
 }
 .text1raw ol {
     list-style-type: decimal;
@@ -887,6 +1096,83 @@ body .lap-image p.hs-body-text-center {
     .bg-adjest::after { display: none; }
 }
 
+/* ── Contact Page ── */
+.contact-page-bg {
+    background-image: url("/images/WhatsApp_Image_2024-10-21_at_17.35.56.webp");
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+.contact-section-2-bg {
+    background-image: url("/images/bg_f6c9be88-cb8b-49cf-84a5-7ca712d6b31f.webp");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.contact-2-bg {
+    background-image: url("/images/contct-2.webp");
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+.contact-form-card-bg {
+    background-image: url("/images/contact-form-bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.contact-input-wrap {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 0 14px;
+    gap: 10px;
+}
+
+.contact-input-icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.contact-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 13px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-input::placeholder {
+    color: #9ca3af;
+}
+
+.contact-submit-btn {
+    background-color: #8BC34A;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 0;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.contact-submit-btn:hover {
+    background-color: #7CB342;
+}
+
+.contact-submit-btn:hover {
+    background-color: #C9F9B6;
+    color: #232323;
+}
+
 @media (max-width: 767px) {
     .sec-bg { width: 51px; height: 65px; margin-top: 10px; margin-left: 8px; margin-right: 15px; }
     .form-image { width: 30px; }
@@ -901,4 +1187,93 @@ body .lap-image p.hs-body-text-center {
     .hypothesis-number { margin-left: 0; margin-right: 10px; display: inline-block; }
     .boy-image-ebook { right: -124px; top: -17px; }
     .faith { padding: 8px 20px; font-size: 14px; border-radius: 40px; }
+}
+
+/* ── Counselling Page ── */
+.font-comic-regular {
+    font-family: 'Comic Sans MS', sans-serif !important;
+    font-weight: normal !important;
+}
+
+.text1raw p {
+    font-size: 20px;
+    text-align: justify;
+}
+
+.counseling li p {
+    line-height: normal !important;
+}
+
+@media (max-width: 767px) {
+    .counseling li p {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+    }
+}
+
+.counselling-sometimes-white-bg {
+    background-color: white;
+}
+
+.align-items-center {
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.justify-content-center {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+
+.font-con {
+    font-size: 24px !important;
+}
+
+.font-comic-bold {
+    font-family: 'Comic Sans MS', sans-serif !important;
+    font-weight: bold !important;
+}
+
+.left-image-text-section p {
+    color: #215083;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.custom-faith {
+    font-size: 24px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 68%;
+    display: block;
+    margin: 0;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50px;
+    font-weight: bold;
+    padding: 10px 20px;
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;
+    line-height: 1.3;
+}
+
+@media (max-width: 767px) {
+    .custom-faith {
+        font-size: 14px;
+        max-width: 100%;
+        padding: 8px 14px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-faith {
+        font-size: 18px;
+        max-width: 80%;
+    }
+}
+
+button:not(:disabled) {
+    cursor: pointer;
 }

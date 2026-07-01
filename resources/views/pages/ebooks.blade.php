@@ -12,9 +12,8 @@
         <!-- Books Section -->
         <div class="flex justify-center w-full px-4 pt-10">
             <div class="w-full max-w-6xl p-4">
-                <div class="flex flex-row w-full gap-4">
-                    <!-- Left Column -->
-                    <div class="flex-[3] p-4">
+                <div class="w-full">
+                    <div class="p-4">
                         <div class="set-heading-ebook">
                             <h3 class="child-heading">{{ $recommendHeading }}</h3>
                         </div>
@@ -22,8 +21,6 @@
                             {!! $bulletItems !!}
                         </div>
                     </div>
-                    <!-- Spacer: hidden on mobile, visible on desktop -->
-                    <div class="hidden lg:block flex-1 p-4"></div>
                 </div>
             </div>
         </div>

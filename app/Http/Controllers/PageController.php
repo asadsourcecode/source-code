@@ -12,6 +12,10 @@ use App\Services\AudioStoriesService;
 use App\Services\TeachersTrainingService;
 use App\Services\HomeschoolingService;
 use App\Services\OnlineClassesService;
+use App\Services\LogotherapyService;
+use App\Services\ContactService;
+use App\Services\CounsellingService;
+use App\Services\IntroductionService;
 use Illuminate\View\View;
 
 class PageController extends Controller
@@ -26,6 +30,10 @@ class PageController extends Controller
         private TeachersTrainingService $teachersTrainingService,
         private OnlineClassesService $onlineClassesService,
         private HomeschoolingService $homeschoolingService,
+        private LogotherapyService $logotherapyService,
+        private ContactService $contactService,
+        private CounsellingService $counsellingService,
+        private IntroductionService $introductionService,
     ) {}
 
     public function about(): View
@@ -71,6 +79,26 @@ class PageController extends Controller
     public function homeschooling(): View
     {
         return view('pages.homeschooling', $this->homeschoolingService->getData());
+    }
+
+    public function introduction(): View
+    {
+        return view('pages.introduction', $this->introductionService->getData());
+    }
+
+    public function logotherapy(): View
+    {
+        return view('pages.logotherapy', $this->logotherapyService->getData());
+    }
+
+    public function counselling(): View
+    {
+        return view('pages.counselling', $this->counsellingService->getData());
+    }
+
+    public function contact(): View
+    {
+        return view('pages.contact', $this->contactService->getData());
     }
 
     public function show(string $slug): View

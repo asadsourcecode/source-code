@@ -4,10 +4,11 @@
 
 @section('content')
 
-<div class="min-h-screen"
-    style="background-image: url('{{ $bgImage }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div class="min-h-screen pt-[80px]"
+    style="background-image: url('{{ $bgImage }}'); background-size: 100% auto; background-position: top center; background-repeat: no-repeat;">
 
-    <div class="max-w-4xl mx-auto px-3 sm:px-4 md:px-6">
+    <div class="flex justify-center">
+    <div class="w-full sm:w-10/12 lg:w-8/12 px-4">
 
         {{-- Top Row: About Us Button (left) + Book Image (right) --}}
         <div class="flex items-start justify-center pt-[30px] sm:pt-[40px] md:pt-[50px]">
@@ -54,19 +55,20 @@
                 mb-[8px] sm:mb-[10px]">
                 About the Author:
             </h2>
-            <div class="about-content pb-8 sm:pb-10">
+            <div class="about-content pb-0">
                 {!! $authorContent !!}
             </div>
         </div>
         @endif
 
         {{-- ICE Logo Watermark --}}
-        <div class="flex justify-center py-8 sm:py-10 md:py-12">
+        <div class="flex justify-center mt-0 sm:-mt-32">
             <img src="{{ asset('images/logo-Nw.webp') }}"
                 alt="ICE Publishers - Integrated Character Education"
-                class="w-36 sm:w-48 md:w-56 lg:w-72 h-auto">
+                class="w-[300px] sm:w-[420px] md:w-[550px] lg:w-[700px] h-auto">
         </div>
 
+    </div>
     </div>
 
 </div>

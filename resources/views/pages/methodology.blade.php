@@ -6,15 +6,16 @@
     <div class="full section-start">
         <div class="section-block section-top-padding">
             <!-- bg-methodology Container -->
-            <div class="bg-methodology !bg-cover !bg-center !bg-no-repeat rounded-[20px] px-[40px] py-[60px] mb-[30px] w-full" style="{{ $bgStyle }}">
+            <div class="bg-methodology !bg-cover !bg-center !bg-no-repeat rounded-[20px] px-[16px] sm:px-[28px] md:px-[40px] py-[30px] sm:py-[45px] md:py-[60px] mb-[30px] w-full" style="{{ $bgStyle }}">
                 <!-- Methodology Button -->
                 <div class="top-button text-center mb-5">
                     <button class="font-raleway-extrabold custom-btn page_Methodology methodology-btn-text-shadow
                            bg-white text-black
-                           px-[58px] py-[22px]
-                           text-[36px]
+                           px-[16px] sm:px-[28px] md:px-[40px] lg:px-[58px]
+                           py-[10px] sm:py-[14px] md:py-[18px] lg:py-[22px]
+                           text-[16px] sm:text-[22px] md:text-[28px] lg:text-[36px]
                            shadow-[0px_3px_6px_rgba(0,0,0,0.9)]
-                           rounded-[14px]
+                           rounded-[8px] sm:rounded-[10px] md:rounded-[14px]
                            font-bold
                            leading-[1.2]
                            capitalize
@@ -30,10 +31,10 @@
                 <!-- Preface Section -->
                 <div class="col-lg-12 mb-4 mb-sm-0 align-self- custom-blk-innertextraw_GmqBV6">
                     <div class="grid__item-inner grid__item-inner--innertextraw">
-                        <div class="row justify-content-center align-items-center">
-                            <div class="innerText col-10 col-sm-10 col-md-10 col-lg-8">
+                        <div class="flex justify-center">
+                            <div class="w-full sm:w-10/12 lg:w-8/12">
                                 <div class="flex justify-center">
-                                    <span class="child-heading" style="font-family: Poppins, sans-serif !important; font-size: 25px !important;">{{ $prefaceHeading }}</span>
+                                    <span class="child-heading methodology-heading" style="font-family: Poppins, sans-serif !important;">{{ $prefaceHeading }}</span>
                                 </div>
                                 <div class="text1raw">
                                     <p>{{ $prefaceSubtext }}</p>
@@ -68,21 +69,21 @@
 
                                 @if($hypothesis1)
                                     <div class="font-comic-regular hypothesis-item" style="margin-top: 120px;">
-                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 15px; opacity: .9; margin-left: -64px; margin-right: 17px;">1.</span><div class="hypothesis-body">{!! $hypothesis1 !!}</div>
+                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 15px; opacity: .9; margin-right: 17px;">1.</span><div class="hypothesis-body">{!! $hypothesis1 !!}</div>
                                     </div>
                                     <br><br>
                                 @endif
 
                                 @if($hypothesis2)
                                     <div class="font-comic-regular hypothesis-item">
-                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-left: -64px; margin-right: 17px;">2.</span><div class="hypothesis-body">{!! $hypothesis2 !!}</div>
+                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-right: 17px;">2.</span><div class="hypothesis-body">{!! $hypothesis2 !!}</div>
                                     </div>
                                     <br><br>
                                 @endif
 
                                 @if($hypothesis3)
                                     <div class="font-comic-regular hypothesis-item">
-                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-left: -64px; margin-right: 17px;">3.</span><div class="hypothesis-body">{!! $hypothesis3 !!}</div>
+                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-right: 17px;">3.</span><div class="hypothesis-body">{!! $hypothesis3 !!}</div>
                                     </div>
                                 @endif
 
