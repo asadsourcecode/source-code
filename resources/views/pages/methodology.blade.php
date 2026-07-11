@@ -3,10 +3,10 @@
 @section('title', ($page->meta_title ?: $page->title) . ' | ICE')
 
 @section('content')
-    <div class="full section-start">
+    <div class="full section-start bg-white">
         <div class="section-block section-top-padding">
             <!-- bg-methodology Container -->
-            <div class="bg-methodology !bg-cover !bg-center !bg-no-repeat rounded-[20px] px-[16px] sm:px-[28px] md:px-[40px] py-[30px] sm:py-[45px] md:py-[60px] mb-[30px] w-full" style="{{ $bgStyle }}">
+            <div class="bg-methodology !bg-cover !bg-center !bg-no-repeat px-[16px] sm:px-[28px] md:px-[40px] py-[30px] sm:py-[45px] md:py-[60px] w-full" style="{{ $bgStyle }}">
                 <!-- Methodology Button -->
                 <div class="top-button text-center mb-5">
                     <button class="font-raleway-extrabold custom-btn page_Methodology methodology-btn-text-shadow
@@ -23,7 +23,8 @@
                            cursor-pointer
                            hover:bg-gray-50
                            transition-all
-                           duration-300">
+                           duration-300
+                           break-words whitespace-normal max-w-full">
                         {{ $page->title }}
                     </button>
                 </div>
@@ -34,7 +35,7 @@
                         <div class="flex justify-center">
                             <div class="w-full sm:w-10/12 lg:w-8/12">
                                 <div class="flex justify-center">
-                                    <span class="child-heading methodology-heading" style="font-family: Poppins, sans-serif !important;">{{ $prefaceHeading }}</span>
+                                    <span class="child-heading methodology-heading font-['Poppins',sans-serif]">{{ $prefaceHeading }}</span>
                                 </div>
                                 <div class="text1raw">
                                     <p>{{ $prefaceSubtext }}</p>
@@ -56,38 +57,24 @@
             </div>
 
             <!-- Main Content Grid -->
-            <div class="row">
-                <div class="col-lg-12 mb-4 mb-sm-0 align-self- custom-blk-heading_with_button_PVQyMH">
-                    <div class="grid__item-inner grid__item-inner--heading_with_button"></div>
-                </div>
-
+            <div class="row m-0 p-0">
                 <!-- Three Hypotheses Section -->
-                <div class="col-lg-12 mb-4 mb-sm-0 align-self- custom-blk-customliquid_TdiRjT">
+                <div class="col-lg-12 m-0 p-0 custom-blk-customliquid_TdiRjT">
                     <div class="grid__item-inner grid__item-inner--customliquid">
-                        <div class="metha_1 p-8" style="{{ $metha1Style }}">
-                            <div class="custom_class container mx-auto">
+                        <div class="metha_1 p-8 relative overflow-hidden" @if($metha1Image) style="background-image: none;" @endif>
+                            @if($metha1Image)
+                                <img src="{{ $metha1Image }}" class="absolute inset-0 w-full h-full object-cover" alt="" aria-hidden="true">
+                            @endif
+                            <div class="custom_class container mx-auto relative z-10">
 
-                                @if($hypothesis1)
-                                    <div class="font-comic-regular hypothesis-item" style="margin-top: 120px;">
-                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 15px; opacity: .9; margin-right: 17px;">1.</span><div class="hypothesis-body">{!! $hypothesis1 !!}</div>
+                                @foreach($hypotheses as $hypothesis)
+                                    <div class="font-comic-regular hypothesis-item {{ $loop->first ? 'mt-[120px]' : 'mt-6' }}">
+                                        <span class="hypothesis-num bg-white rounded-full py-[6px] px-[15px] opacity-90 mr-[17px]">{{ $loop->iteration }}.</span>
+                                        <div class="hypothesis-body">{!! $hypothesis !!}</div>
                                     </div>
-                                    <br><br>
-                                @endif
+                                @endforeach
 
-                                @if($hypothesis2)
-                                    <div class="font-comic-regular hypothesis-item">
-                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-right: 17px;">2.</span><div class="hypothesis-body">{!! $hypothesis2 !!}</div>
-                                    </div>
-                                    <br><br>
-                                @endif
-
-                                @if($hypothesis3)
-                                    <div class="font-comic-regular hypothesis-item">
-                                        <span class="hypothesis-num" style="background-color: white !important; border-radius: 50%; padding: 6px 13px; opacity: .9; margin-right: 17px;">3.</span><div class="hypothesis-body">{!! $hypothesis3 !!}</div>
-                                    </div>
-                                @endif
-
-                                <p class="font-comic-regular" style="color:#626363;">{{ $hypothesesClose }}</p>
+                                <p class="font-comic-regular text-[#626363]">{{ $hypothesesClose }}</p>
                             </div>
                         </div>
                     </div>

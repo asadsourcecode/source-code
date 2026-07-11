@@ -19,5 +19,12 @@ Route::get('/pages/introduction', [PageController::class, 'introduction'])->name
 Route::get('/logotherapy', [PageController::class, 'logotherapy'])->name('logotherapy');
 Route::get('/counselling', [PageController::class, 'counselling'])->name('counselling');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-
+Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
+Route::get('/pricing/preview', [PageController::class, 'pricingPreview'])->name('pricing.preview');
+Route::get('/account', [PageController::class, 'account'])->middleware('auth')->name('account');
+Route::get('/cart', [PageController::class, 'cart'])->name('cart');
+Route::get('/product/{slug}', [PageController::class, 'product'])->name('product.show');
+Route::get('/package/{id}', [PageController::class, 'package'])->name('package.show');
 Route::get('/pages/{slug}', [PageController::class, 'show'])->name('page.show');
+
+require __DIR__.'/auth.php';

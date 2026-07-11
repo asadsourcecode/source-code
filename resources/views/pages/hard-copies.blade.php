@@ -5,10 +5,10 @@
 @section('content')
     <div class="stars_bg min-h-screen">
 
-        <div class="flex items-start justify-center pt-[30px] sm:pt-[40px] md:pt-[50px]">
+        <div class="flex justify-center w-full px-4 pt-[30px] sm:pt-[40px] md:pt-[50px]">
+            <div class="w-full max-w-6xl flex items-start justify-center gap-3 sm:gap-4">
 
-            {{-- Title Button --}}
-            <div class="min-w-0 flex-1 max-w-[180px] sm:max-w-[240px] md:max-w-[300px]">
+                {{-- Title Button --}}
                 <button class="font-['Raleway',sans-serif] font-extrabold bg-white text-black
                     text-[16px] sm:text-[22px] md:text-[28px] lg:text-[36px]
                     px-[16px] sm:px-[28px] md:px-[40px] lg:px-[58px]
@@ -17,17 +17,15 @@
                     shadow-[0px_3px_6px_rgba(0,0,0,0.9)]
                     border-none capitalize leading-[1.2]
                     [text-shadow:0px_2px_0px_#8A8C8E]
-                    whitespace-nowrap">
+                    break-words min-w-0">
                     {{ $page?->title ?? 'Hard Copies' }}
                 </button>
-            </div>
 
-            {{-- Title image --}}
-            <div class="flex-shrink-0 pl-6 sm:pl-8 md:pl-12 pr-4 sm:pr-6">
+                {{-- Title image --}}
                 <img src="{{ $bookImage }}" alt="Hard Copy Book"
-                    class="h-[48px] sm:h-[64px] md:h-[86px] w-auto">
-            </div>
+                    class="flex-shrink-0 h-[48px] sm:h-[64px] md:h-[86px] w-auto">
 
+            </div>
         </div>
 
         <!-- Spacer -->
@@ -39,8 +37,8 @@
                 <div class="w-full">
                     <!-- Content -->
                     <div class="p-2 sm:p-4">
-                        <div class="set-heading-ebook w-full sm:w-4/5 lg:w-3/5 mr-auto" style="margin-left: 50px;">
-                            <h3 class="child-heading" style="text-align: start;">{{ $listHeading }}</h3>
+                        <div class="set-heading-ebook w-fit max-w-[calc(100%-50px)] ml-[50px]">
+                            <h3 class="child-heading text-start">{{ $listHeading }}</h3>
                         </div>
                         <div class="text1raw mt-4">
                             <div class="list-disc pl-5">
@@ -52,7 +50,7 @@
                             <div class="flex justify-center w-full mt-4">
                                 <img src="{{ $checkoutImage }}" alt="Checkout" class="h-auto max-w-full">
                             </div>
-                            <p class="font-comic-regular mt-4" style="text-align: center !important;">{{ $shippingText }}</p>
+                            <p class="font-comic-regular mt-4 text-center">{{ $shippingText }}</p>
                         </div>
                     </div>
                 </div>

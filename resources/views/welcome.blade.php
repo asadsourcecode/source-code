@@ -319,16 +319,16 @@
         </div>
 
         {{-- Slider --}}
-        <div id="fs-wrapper" class="relative px-14 mx-auto" style="max-width: 1400px;">
+        <div id="fs-wrapper" class="relative px-14 mx-auto max-w-[1400px]">
 
             {{-- Prev arrow --}}
             <button id="fs-prev"
-                class="hidden sm:block absolute left-0 top-[50%] -translate-y-1/2 z-10 w-[60px] h-[88px] bg-no-repeat bg-contain bg-center border-0 bg-transparent cursor-pointer"
-                style="background-image: url('{{ asset('images/left-arrow.png') }}'); top: 124px;">
+                class="hidden sm:block absolute left-0 top-[124px] z-10 w-[60px] h-[88px] bg-no-repeat bg-contain bg-center border-0 bg-transparent cursor-pointer"
+                style="background-image: url('{{ asset('images/left-arrow.png') }}');">
             </button>
 
             {{-- Track viewport: clip X so slider works, Y visible so books poke above --}}
-            <div class="mt-[70px]" style="overflow-x: clip; overflow-y: visible;">
+            <div class="mt-[70px] overflow-x-clip overflow-y-visible">
                 <div id="fs-track" class="flex gap-4 transition-transform duration-300 ease-in-out">
 
                     @foreach([
@@ -347,8 +347,7 @@
                         <div class="fs-slide flex-shrink-0">
 
                             {{-- White card --}}
-                            <div class="fs-card bg-white rounded-[15px] px-2 pt-2 pb-2"
-                                 style="box-shadow: -1px -1px 3px rgba(0,0,0,0.2), 4px 4px 10px rgba(0,0,0,0.76); overflow: visible;">
+                            <div class="fs-card bg-white rounded-[15px] px-2 pt-2 pb-2 overflow-visible shadow-[-1px_-1px_3px_rgba(0,0,0,0.2),4px_4px_10px_rgba(0,0,0,0.76)]">
 
                                 {{-- Books: -mt pulls them above the card top edge --}}
                                 <div class="flex justify-center gap-2 -mt-[60px] mb-2">
@@ -385,8 +384,8 @@
 
             {{-- Next arrow --}}
             <button id="fs-next"
-                class="hidden sm:block absolute right-0 z-10 w-[60px] h-[88px] bg-no-repeat bg-contain bg-center border-0 bg-transparent cursor-pointer"
-                style="background-image: url('{{ asset('images/right-arrow.png') }}'); top: 80px;">
+                class="hidden sm:block absolute right-0 top-[80px] z-10 w-[60px] h-[88px] bg-no-repeat bg-contain bg-center border-0 bg-transparent cursor-pointer"
+                style="background-image: url('{{ asset('images/right-arrow.png') }}');">
             </button>
 
         </div>
@@ -485,14 +484,15 @@
                 @forelse($features as $feature)
                     @php
                         $featureImageDefaults = [
-                            'feature-homeschooling'      => 'images/homeschooling_medium.png',
+                            'feature-homeschooling'      => 'images/dashboardschooling_medium.png',
                             'feature-counselling-therapy'=> 'images/mind-body-spirit.webp',
                         ];
                         $featureImg = $feature->featured_image
                             ? asset('admin-storage/' . $feature->featured_image)
                             : (isset($featureImageDefaults[$feature->slug]) ? asset($featureImageDefaults[$feature->slug]) : null);
                     @endphp
-                    <div class="flex flex-col rounded-[25px] overflow-hidden text-center mb-5 bg-white shadow-[-1px_-1px_3px_rgba(0,0,0,0.2),4px_5px_5px_rgba(0,0,0,0.76)]">
+                    <a href="{{ $featureRoutes[$feature->slug] ?? '/pages/' . $feature->slug }}"
+                       class="flex flex-col rounded-[25px] overflow-hidden text-center mb-5 bg-white shadow-[-1px_-1px_3px_rgba(0,0,0,0.2),4px_5px_5px_rgba(0,0,0,0.76)] hover:shadow-xl transition-shadow duration-200 no-underline">
 
                         @if($featureImg)
                             <img src="{{ $featureImg }}"
@@ -504,13 +504,12 @@
                             <p class="text-[13px] md:text-[14px] leading-relaxed px-[15px] text-left flex-1">
                                 {{ $feature->short_description }}
                             </p>
-                            <a href="/pages/{{ $feature->slug }}"
-                               class="inline-block mt-3 text-black font-semibold text-sm hover:underline">
+                            <span class="inline-block mt-3 text-black font-semibold text-sm hover:underline">
                                 Read More
-                            </a>
+                            </span>
                         </div>
 
-                    </div>
+                    </a>
                 @empty
                     <p class="col-span-4 text-center text-gray-400 text-sm py-8">
                         No features yet. Add pages with slugs starting with <code>feature-</code> in the admin.
@@ -660,8 +659,8 @@
     </section>
 
     {{-- ── Hijab Girl Banner ── --}}
-    <section class="w-full relative" style="background-image: url('{{ asset('images/hijab-girl.webp') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 700px;">
-        <div style="width: 100%; height: 100%; position: absolute; background-image: url('{{ asset('images/sofia-adeem.webp') }}'); background-size: 50%; background-repeat: no-repeat; background-position: center center; left: 0; top: 0;"></div>
+    <section class="w-full relative bg-cover bg-center bg-no-repeat min-h-[700px]" style="background-image: url('{{ asset('images/hijab-girl.webp') }}');">
+        <div class="w-full h-full absolute inset-0 bg-[length:50%] bg-no-repeat bg-center" style="background-image: url('{{ asset('images/sofia-adeem.webp') }}');"></div>
     </section>
 
     {{-- ── Contact Us ── --}}
@@ -755,7 +754,7 @@
     </section>
 
     {{-- ── Blog ── --}}
-    <section class="py-16" style="background-image: url('{{ asset('images/monthly-blog-post.webp') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <section class="py-16 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('images/monthly-blog-post.webp') }}');">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="flex items-center justify-center gap-3 mb-10">
