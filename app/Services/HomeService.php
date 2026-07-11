@@ -30,6 +30,13 @@ class HomeService
             ->orderBy('id')
             ->get();
 
+        $featureRoutes = [
+            'feature-homeschooling'       => route('homeschooling'),
+            'feature-teachers-training'   => route('teachers-training'),
+            'feature-online-learning'     => route('online-classes'),
+            'feature-counselling-therapy' => route('counselling'),
+        ];
+
         $partners = Partner::active()->orderBy('sort_order')->get();
 
         $innerCards = Page::active()
@@ -64,6 +71,7 @@ class HomeService
             'testimonials',
             'posts',
             'features',
+            'featureRoutes',
             'partners',
             'innerCards',
             'missionDefaults',

@@ -31,7 +31,7 @@
     </div>
 
     {{-- Image --}}
-    <div class="pb-10" style="width:90%; max-width:1100px; margin: 0 auto;">
+    <div class="pb-10 w-[90%] max-w-[1100px] mx-auto">
         <img src="{{ asset('images/join_1.webp') }}" alt="" class="block w-full">
     </div>
 

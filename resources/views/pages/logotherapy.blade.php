@@ -32,22 +32,22 @@
 
         {{-- Body text --}}
         <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto mb-10">
-            <ul class="w-full font-['Comic_Sans_MS',sans-serif] font-normal text-[14px] sm:text-[16px] md:text-[18px] lg:text-[24px] leading-[1.5] list-none p-0 space-y-4 sm:space-y-5" style="padding-left: 4px; margin: 0;">
-                <li style="display: flex; align-items: flex-start; gap: 4px;">
-                    <span style="flex-shrink: 0; width: 14px; height: 14px; border-radius: 50%; border: 1px solid #555; background: #fff; display: inline-block; margin-top: 8px;"></span>
-                    <span style="margin: 0; flex: 1; padding-left: 5px;">Logotherapy focuses on searching for one's unique meaning in life. It teaches us that it is not we who ask the questions of life: Why me? Why this? Why now? Rather, LIFE asks us questions, and it is our responsibility to answer them. We are here to utilize and become the best versions of ourselves.</span>
+            <ul class="w-full font-['Comic_Sans_MS',sans-serif] font-normal text-[14px] sm:text-[16px] md:text-[18px] lg:text-[24px] leading-[1.5] list-none p-0 pl-1 m-0 space-y-4 sm:space-y-5">
+                <li class="flex items-start gap-1">
+                    <span class="flex-shrink-0 w-[14px] h-[14px] rounded-full border border-[#555] bg-white inline-block mt-2"></span>
+                    <span class="m-0 flex-1 pl-[5px]">Logotherapy focuses on searching for one's unique meaning in life. It teaches us that it is not we who ask the questions of life: Why me? Why this? Why now? Rather, LIFE asks us questions, and it is our responsibility to answer them. We are here to utilize and become the best versions of ourselves.</span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 4px;">
-                    <span style="flex-shrink: 0; width: 14px; height: 14px; border-radius: 50%; border: 1px solid #555; background: #fff; display: inline-block; margin-top: 8px;"></span>
-                    <span style="margin: 0; flex: 1; padding-left: 5px;">Sofia Adeem is an accredited member of the International Association of Logotherapy and Existentialistic Analysis with a Diploma in Logotherapy and major in Psychological Counselling.</span>
+                <li class="flex items-start gap-1">
+                    <span class="flex-shrink-0 w-[14px] h-[14px] rounded-full border border-[#555] bg-white inline-block mt-2"></span>
+                    <span class="m-0 flex-1 pl-[5px]">Sofia Adeem is an accredited member of the International Association of Logotherapy and Existentialistic Analysis with a Diploma in Logotherapy and major in Psychological Counselling.</span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 4px;">
-                    <span style="flex-shrink: 0; width: 14px; height: 14px; border-radius: 50%; border: 1px solid #555; background: #fff; display: inline-block; margin-top: 8px;"></span>
-                    <span style="margin: 0; flex: 1; padding-left: 5px;">I look forward to being of service to you on Logotherapy Online.</span>
+                <li class="flex items-start gap-1">
+                    <span class="flex-shrink-0 w-[14px] h-[14px] rounded-full border border-[#555] bg-white inline-block mt-2"></span>
+                    <span class="m-0 flex-1 pl-[5px]">I look forward to being of service to you on Logotherapy Online.</span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 4px;">
-                    <span style="flex-shrink: 0; width: 14px; height: 14px; border-radius: 50%; border: 1px solid #555; background: #fff; display: inline-block; margin-top: 8px;"></span>
-                    <span style="margin: 0; flex: 1; padding-left: 5px;">Logotherapy Online Counselling is OPEN. Please email your preferred date and time, and we will confirm availability.</span>
+                <li class="flex items-start gap-1">
+                    <span class="flex-shrink-0 w-[14px] h-[14px] rounded-full border border-[#555] bg-white inline-block mt-2"></span>
+                    <span class="m-0 flex-1 pl-[5px]">Logotherapy Online Counselling is OPEN. Please email your preferred date and time, and we will confirm availability.</span>
                 </li>
             </ul>
         </div>
@@ -211,9 +211,9 @@
         <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto text-center mb-10 sm:mb-14 mt-8 sm:mt-10">
             <div class="w-full oc-body-text">
 
-                <p class="mb-4 sm:mb-5"><strong style="text-decoration: underline; text-decoration-color: white; text-decoration-thickness: 3px;">Guilt</strong> is viewed as an opportunity to change oneself for the better.</p>
+                <p class="mb-4 sm:mb-5"><strong class="underline decoration-white decoration-[3px]">Guilt</strong> is viewed as an opportunity to change oneself for the better.</p>
 
-                <p class="mb-4 sm:mb-5"><strong style="text-decoration: underline; text-decoration-color: white; text-decoration-thickness: 3px;">Life transitions</strong> are viewed as the chance to take responsible action aligned with your purpose.</p>
+                <p class="mb-4 sm:mb-5"><strong class="underline decoration-white decoration-[3px]">Life transitions</strong> are viewed as the chance to take responsible action aligned with your purpose.</p>
 
                 <p class="mb-4 sm:mb-5">In this way, Logotherapy is aimed at helping you to make better use of your "spiritual" resources to withstand adversity. Our inner resources need to be found, acknowledged, nurtured and put into practice.</p>
 
@@ -228,7 +228,7 @@
         </div>
 
         {{-- Techniques section --}}
-        <div class="w-full mt-8 sm:mt-10" style="background-image: url('{{ asset('images/dabba.webp') }}'); background-size: 100% 100%; background-repeat: no-repeat; padding-top: 40px; padding-bottom: 20px;">
+        <div class="w-full mt-8 sm:mt-10 bg-[length:100%_100%] bg-no-repeat pt-10 pb-5" style="background-image: url('{{ asset('images/dabba.webp') }}');">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full">
 
@@ -249,17 +249,17 @@
         <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto mt-8 sm:mt-12 mb-10 sm:mb-14">
             <div class="w-full oc-body-text space-y-5 sm:space-y-6">
 
-                <p><strong style="text-decoration: underline; text-decoration-color: white; text-decoration-thickness: 3px;">De-reflection</strong> occurs when a person hyper-reflects on a problem to an extent which is out of proportion and unhealthy. The client needs to combat focus on an anxiety-provoking situation or object by being de-reflected from the disturbance and <strong>reoriented</strong>.</p>
+                <p><strong class="underline decoration-white decoration-[3px]">De-reflection</strong> occurs when a person hyper-reflects on a problem to an extent which is out of proportion and unhealthy. The client needs to combat focus on an anxiety-provoking situation or object by being de-reflected from the disturbance and <strong>reoriented</strong>.</p>
 
-                <p><strong style="text-decoration: underline; text-decoration-color: white; text-decoration-thickness: 3px;">Paradoxical intention</strong> is a technique that invites you to wish for the thing you fear most. It is used in cases of anxiety or phobias, in which humour is applied when fear is out of proportion and paralysing.</p>
+                <p><strong class="underline decoration-white decoration-[3px]">Paradoxical intention</strong> is a technique that invites you to wish for the thing you fear most. It is used in cases of anxiety or phobias, in which humour is applied when fear is out of proportion and paralysing.</p>
 
-                <p><strong style="text-decoration: underline; text-decoration-color: white; text-decoration-thickness: 3px;">Socratic dialogue</strong> is a tool used to help the client through the process of self-discovery by noticing and interpreting your own words. During the dialogue, your therapist listens closely to how you describe things and points out your word patterns, helping you see their underlying meaning. This process is believed to help you realise your own answers as they are often already present within you and just waiting to be discovered.</p>
+                <p><strong class="underline decoration-white decoration-[3px]">Socratic dialogue</strong> is a tool used to help the client through the process of self-discovery by noticing and interpreting your own words. During the dialogue, your therapist listens closely to how you describe things and points out your word patterns, helping you see their underlying meaning. This process is believed to help you realise your own answers as they are often already present within you and just waiting to be discovered.</p>
 
             </div>
         </div>
 
         {{-- Modification of Attitudes --}}
-        <div class="w-full" style="background-image: url('{{ asset('images/dabba.webp') }}'); background-size: 100% 100%; background-repeat: no-repeat; padding-top: 40px; padding-bottom: 40px;">
+        <div class="w-full bg-[length:100%_100%] bg-no-repeat pt-10 pb-10" style="background-image: url('{{ asset('images/dabba.webp') }}');">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full oc-body-text space-y-5 sm:space-y-6">
 
@@ -333,7 +333,7 @@
         </div>
 
         {{-- Benefits of Logotherapy section --}}
-        <div class="w-full" style="background-image: url('{{ asset('images/dabba.webp') }}'); background-size: 100% 100%; background-repeat: no-repeat; padding-top: 40px; padding-bottom: 40px;">
+        <div class="w-full bg-[length:100%_100%] bg-no-repeat pt-10 pb-10" style="background-image: url('{{ asset('images/dabba.webp') }}');">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full">
 
@@ -420,7 +420,7 @@
         </div>
 
         {{-- Effectiveness section (dabba bg) --}}
-        <div class="w-full" style="background-image: url('{{ asset('images/dabba.webp') }}'); background-size: 100% 100%; background-repeat: no-repeat; padding-top: 40px; padding-bottom: 40px;">
+        <div class="w-full bg-[length:100%_100%] bg-no-repeat pt-10 pb-10" style="background-image: url('{{ asset('images/dabba.webp') }}');">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full">
                     <div class="w-fit mb-4"><span class="oc-heading">Effectiveness</span></div>
@@ -460,7 +460,7 @@
         </div>
 
         {{-- References section (dabba bg) --}}
-        <div class="w-full" style="background-image: url('{{ asset('images/dabba.webp') }}'); background-size: 100% 100%; background-repeat: no-repeat; padding-top: 40px; padding-bottom: 40px;">
+        <div class="w-full bg-[length:100%_100%] bg-no-repeat pt-10 pb-10" style="background-image: url('{{ asset('images/dabba.webp') }}');">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full">
 

@@ -10,20 +10,31 @@ class MethodologyService
     {
         $page = Page::active()->where('slug', 'methodology')->firstOrFail();
 
-        $bgStyle = $page->meta('bg_methodology')
-            ? 'background-image: url("' . asset('admin-storage/' . $page->meta('bg_methodology')) . '"); background-size: cover; background-position: center; background-repeat: no-repeat;'
+        $bgStyle = ($page->meta('bg_color_mode') === 'custom' && $page->meta('bg_color_top'))
+            ? 'background-color: ' . $page->meta('bg_color_top') . '; background-image: none;'
             : '';
 
-        $metha1Style = $page->meta('metha_1_image')
-            ? 'background-image: url("' . asset('admin-storage/' . $page->meta('metha_1_image')) . '"); background-size: cover; background-repeat: no-repeat;'
-            : '';
+        $metha1Image = $page->meta('metha_1_image')
+            ? asset('admin-storage/' . $page->meta('metha_1_image'))
+            : null;
 
         $prefaceHeading  = $page->meta('preface_heading', 'PREFACE AND THE THREE HYPOTHESES OF THE COURSE');
         $prefaceSubtext  = $page->meta('preface_subtext', 'The approach of this Character Education School Course can be summarised through the following aims/hypotheses:');
 
-        $hypothesis1     = $page->meta('hypothesis_1');
-        $hypothesis2     = $page->meta('hypothesis_2');
-        $hypothesis3     = $page->meta('hypothesis_3');
+        // Support new Repeater format (meta.hypotheses) and fall back to legacy keys
+        $hypothesesMeta = $page->meta('hypotheses');
+        if ($hypothesesMeta && is_array($hypothesesMeta)) {
+            $hypotheses = array_values(array_filter(array_column($hypothesesMeta, 'content')));
+        } else {
+            $hypotheses = array_values(array_filter([
+                $page->meta('hypothesis_1'),
+                $page->meta('hypothesis_2'),
+                $page->meta('hypothesis_3'),
+            ]));
+        }
+
+        $hypotheses = array_map(fn ($h) => rtrim(preg_replace('/(\s*<br\s*\/?>\s*)+$/i', '', trim($h))), $hypotheses);
+
         $hypothesesClose = $page->meta('hypotheses_closing', 'This character-building Course is developed to help guide the new generation through the jungle of life, which can be very deceitful, especially if one is not aware of "the true rules of the game" and what life is truly about in its essence.');
 
         $image1 = $page->meta('image_1')
@@ -39,9 +50,9 @@ class MethodologyService
 
         return compact(
             'page',
-            'bgStyle', 'metha1Style',
+            'bgStyle', 'metha1Image',
             'prefaceHeading', 'prefaceSubtext',
-            'hypothesis1', 'hypothesis2', 'hypothesis3', 'hypothesesClose',
+            'hypotheses', 'hypothesesClose',
             'image1',
             'objectiveText', 'objectiveHighlight',
             'image2',

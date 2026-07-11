@@ -3,7 +3,7 @@
 @section('title', ($page?->meta_title ?: $page?->title ?: 'E-Books') . ' | ICE')
 
 @section('content')
-    <div class="shutter_bg">
+    <div class="shutter_bg" @if($bgStyle) style="{{ $bgStyle }}" @endif>
 
         <div class="text-center">
             <button class="font-raleway-extrabold custom-btn page_ebook-2">{{ $page?->title ?? 'E-Books' }}</button>
@@ -36,7 +36,7 @@
         <div class="flex justify-center w-full px-4 pt-10">
             <div class="w-full max-w-6xl flex flex-col lg:flex-row lg:justify-between lg:items-end">
                 <!-- Button -->
-                <a href="{{ $catalogButtonUrl }}" class="faith self-start lg:self-center mb-4 lg:mb-0">
+                <a href="{{ route('pricing') }}" class="faith self-start lg:self-center mb-4 lg:mb-0">
                     <b class="text-xl">{{ $catalogButtonText }}</b>
                 </a>
                 <!-- Boy image -->

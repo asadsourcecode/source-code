@@ -24,7 +24,43 @@ class SiteDataService
             }])
             ->first();
 
-        return $menu?->items ?? collect();
+        return $this->addRouteMapping($menu?->items ?? collect());
+    }
+
+    private function addRouteMapping(Collection $items): Collection
+    {
+        return $items->map(function ($item) {
+            $normalizedTitle = strtolower(str_replace(' ', '', $item->title));
+
+            // Match by containing keywords instead of exact match
+            if (str_contains($normalizedTitle, 'teacher') && str_contains($normalizedTitle, 'training')) {
+                $item->route = 'teachers-training';
+            } elseif (str_contains($normalizedTitle, 'online') && str_contains($normalizedTitle, 'class')) {
+                $item->route = 'online-classes';
+            } elseif (str_contains($normalizedTitle, 'audio') && str_contains($normalizedTitle, 'stori')) {
+                $item->route = 'audio-stories';
+            } elseif (str_contains($normalizedTitle, 'homeschool')) {
+                $item->route = 'homeschooling';
+            } elseif (str_contains($normalizedTitle, 'intro')) {
+                $item->route = 'introduction';
+            } elseif (str_contains($normalizedTitle, 'contact')) {
+                $item->route = 'contact';
+            } elseif (str_contains($normalizedTitle, 'counsel')) {
+                $item->route = 'counselling';
+            } elseif (str_contains($normalizedTitle, 'pricing')) {
+                $item->route = 'pricing';
+            } elseif (str_contains($normalizedTitle, 'book')) {
+                $item->route = null;
+            } else {
+                $item->route = null;
+            }
+
+            if ($item->children->isNotEmpty()) {
+                $item->children = $this->addRouteMapping($item->children);
+            }
+
+            return $item;
+        });
     }
 
     public function footerMenu(): Collection
