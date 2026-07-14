@@ -1,6 +1,8 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', ($page?->meta_title ?: $page?->title ?: 'Counselling') . ' | ICE')
+@section('meta_description', $page->meta_description)
+@section('meta_keywords', $page->meta_keywords)
 
 @section('content')
 
@@ -25,8 +27,8 @@
     </div>
 
     {{-- Section 2: Credentials list --}}
-    <div class="bg-[length:100%_100%] bg-center bg-no-repeat min-h-[400px] block m-0"
-         @if($bg2Style) style="{{ $bg2Style }}" @else style="background-image: url('{{ asset('images/conselling_1_small.webp') }}');" @endif>
+    <div class="bg-[length:100%_100%] bg-center bg-no-repeat min-h-[400px] block m-0 counselling-default-bg"
+         @if($bg2Style) style="{{ $bg2Style }}" @endif>
 
         <div class="counseling text1raw font-comic-regular flex flex-col items-center pb-8 sm:pb-10 px-4 sm:px-8 md:px-12 pt-0">
 
@@ -60,8 +62,8 @@
     @endif
 
     {{-- Section 4: Life & Faith --}}
-    <div class="bg-[length:100%_100%] bg-center bg-no-repeat block m-0 pt-10 px-4 pb-[100px]"
-         @if($bg2Style) style="{{ $bg2Style }}" @else style="background-image: url('{{ asset('images/conselling_1_small.webp') }}');" @endif>
+    <div class="bg-[length:100%_100%] bg-center bg-no-repeat block m-0 pt-10 px-4 pb-[100px] counselling-default-bg"
+         @if($bg2Style) style="{{ $bg2Style }}" @endif>
 
         <div class="flex justify-center mb-[30px]">
             <img src="{{ $lifeImage }}" alt="" class="max-w-full h-auto block">

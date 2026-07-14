@@ -1,6 +1,8 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', ($page?->meta_title ?: $page?->title ?: 'Contact Us') . ' | ICE')
+@section('meta_description', $page->meta_description)
+@section('meta_keywords', $page->meta_keywords)
 
 @section('content')
 <div class="bg-white">
@@ -46,10 +48,7 @@
             <div class="text-center">
                 <p class="font-extrabold mb-3 text-[18px] lg:text-[22px] font-['Comic_Sans_MS',sans-serif]">{{ $col1Heading }}</p>
                 <div class="flex items-center gap-2 justify-center text-[16px] lg:text-[20px]">
-                    <svg class="w-5 h-5 flex-shrink-0 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                        <path d="M11.998 0C5.374 0 0 5.373 0 11.998c0 2.117.554 4.103 1.522 5.825L.057 23.854a.75.75 0 00.92.92l6.04-1.465A11.945 11.945 0 0011.998 24C18.625 24 24 18.626 24 11.998 24 5.373 18.625 0 11.998 0zm0 21.818a9.82 9.82 0 01-5.002-1.367l-.36-.214-3.716.902.924-3.61-.234-.37a9.818 9.818 0 01-1.428-5.161c0-5.42 4.41-9.83 9.816-9.83 5.408 0 9.818 4.41 9.818 9.83 0 5.419-4.41 9.82-9.82 9.82z"/>
-                    </svg>
+                    <x-icon-whatsapp />
                     <span>{{ $col1Text }}</span>
                 </div>
             </div>
@@ -88,30 +87,17 @@
                     @csrf
 
                     <div class="contact-input-wrap">
-                        <span class="contact-input-icon">
-                            <svg class="w-[24px] h-[24px] text-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                            </svg>
-                        </span>
+                        <span class="contact-input-icon"><x-icon-user /></span>
                         <input type="text" name="name" placeholder="Name" required class="contact-input font-['Raleway',sans-serif]">
                     </div>
 
                     <div class="contact-input-wrap">
-                        <span class="contact-input-icon">
-                            <svg class="w-[24px] h-[24px] text-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                            </svg>
-                        </span>
+                        <span class="contact-input-icon"><x-icon-email /></span>
                         <input type="email" name="email" placeholder="Email" required class="contact-input font-['Raleway',sans-serif]">
                     </div>
 
                     <div class="contact-input-wrap">
-                        <span class="contact-input-icon">
-                            <svg class="w-[24px] h-[24px] text-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
-                            </svg>
-                        </span>
+                        <span class="contact-input-icon"><x-icon-document /></span>
                         <input type="text" name="subject" placeholder="Subject" class="contact-input font-['Raleway',sans-serif]">
                     </div>
 

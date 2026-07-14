@@ -1,6 +1,8 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', ($page?->meta_title ?: $page?->title ?: 'E-Books') . ' | ICE')
+@section('meta_description', $page->meta_description)
+@section('meta_keywords', $page->meta_keywords)
 
 @section('content')
     <div class="shutter_bg" @if($bgStyle) style="{{ $bgStyle }}" @endif>

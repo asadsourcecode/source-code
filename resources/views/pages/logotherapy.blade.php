@@ -1,6 +1,8 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', ($page?->meta_title ?: $page?->title ?: 'Online Logotherapy') . ' | ICE')
+@section('meta_description', $page->meta_description)
+@section('meta_keywords', $page->meta_keywords)
 
 @section('content')
     <div class="logotherapy-bg min-h-screen">
@@ -228,7 +230,7 @@
         </div>
 
         {{-- Techniques section --}}
-        <div class="w-full mt-8 sm:mt-10 bg-[length:100%_100%] bg-no-repeat pt-10 pb-5" style="background-image: url('{{ asset('images/dabba.webp') }}');">
+        <div class="w-full mt-8 sm:mt-10 bg-no-repeat dabba-section-bg pt-10 pb-5">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full">
 
@@ -259,7 +261,7 @@
         </div>
 
         {{-- Modification of Attitudes --}}
-        <div class="w-full bg-[length:100%_100%] bg-no-repeat pt-10 pb-10" style="background-image: url('{{ asset('images/dabba.webp') }}');">
+        <div class="w-full bg-no-repeat dabba-section-bg pt-10 pb-10">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full oc-body-text space-y-5 sm:space-y-6">
 
@@ -286,7 +288,7 @@
 
                 <div class="oc-body-text">
 
-                    <p>It is believed that the right perspective and attitude can set you free. However, when we are indulged in a crisis, we can have a hard time seeing things as they truly are. We might have adopted a negative, pessimistic angle or might just be confused about things. One thing is sure: when things are not working out for us, we need to do something differently and "see beyond". Sometimes, all we need is another perspective – one that is constructive and makes sense in the bigger picture. Other times, we need a concrete set of toolboxes to fix the engine, one part at a time.</p>
+                    <p>It is believed that the right perspective and attitude can set you free. However, when we are indulged in a crisis, we can have a hard time seeing things as they truly are. We might have adopted a negative, pessimistic angle or might just be confused about things. One thing is sure: when things are not working out for us, we need to do something differently and "see beyond". Sometimes, all we need is another perspective â€“ one that is constructive and makes sense in the bigger picture. Other times, we need a concrete set of toolboxes to fix the engine, one part at a time.</p>
 
                     <br>
 
@@ -333,7 +335,7 @@
         </div>
 
         {{-- Benefits of Logotherapy section --}}
-        <div class="w-full bg-[length:100%_100%] bg-no-repeat pt-10 pb-10" style="background-image: url('{{ asset('images/dabba.webp') }}');">
+        <div class="w-full bg-no-repeat dabba-section-bg pt-10 pb-10">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full">
 
@@ -420,7 +422,7 @@
         </div>
 
         {{-- Effectiveness section (dabba bg) --}}
-        <div class="w-full bg-[length:100%_100%] bg-no-repeat pt-10 pb-10" style="background-image: url('{{ asset('images/dabba.webp') }}');">
+        <div class="w-full bg-no-repeat dabba-section-bg pt-10 pb-10">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full">
                     <div class="w-fit mb-4"><span class="oc-heading">Effectiveness</span></div>
@@ -460,7 +462,7 @@
         </div>
 
         {{-- References section (dabba bg) --}}
-        <div class="w-full bg-[length:100%_100%] bg-no-repeat pt-10 pb-10" style="background-image: url('{{ asset('images/dabba.webp') }}');">
+        <div class="w-full bg-no-repeat dabba-section-bg pt-10 pb-10">
             <div class="w-[90%] sm:w-[80%] lg:w-[65%] mx-auto">
                 <div class="w-full">
 

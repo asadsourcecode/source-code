@@ -40,33 +40,32 @@
         <div>
             <input type="text" name="first_name" id="FirstName" placeholder="First name" autofocus
                 value="{{ old('first_name') }}"
-                style="width:100%;background-color:#fff;color:#333;border:1px solid #ccc;border-radius:0;padding:16px 15px;font-size:14px;line-height:1.5;outline:none;box-shadow:none;display:block;">
+                class="auth-form-input">
             <label for="FirstName" class="sr-only">First name</label>
         </div>
 
         <div>
             <input type="text" name="last_name" id="LastName" placeholder="Last name"
                 value="{{ old('last_name') }}"
-                style="width:100%;background-color:#fff;color:#333;border:1px solid #ccc;border-radius:0;padding:16px 15px;font-size:14px;line-height:1.5;outline:none;box-shadow:none;display:block;">
+                class="auth-form-input">
             <label for="LastName" class="sr-only">Last name</label>
         </div>
 
         <div>
             <input type="email" name="email" id="Email" placeholder="Email"
                 value="{{ old('email') }}"
-                style="width:100%;background-color:#fff;color:#333;border:1px solid #ccc;border-radius:0;padding:16px 15px;font-size:14px;line-height:1.5;outline:none;box-shadow:none;display:block;">
+                class="auth-form-input">
             <label for="Email" class="sr-only">Email</label>
         </div>
 
         <div>
             <input type="password" name="password" id="Password" placeholder="Password"
-                style="width:100%;background-color:#fff;color:#333;border:1px solid #ccc;border-radius:0;padding:16px 15px;font-size:14px;line-height:1.5;outline:none;box-shadow:none;display:block;">
+                class="auth-form-input">
             <label for="Password" class="sr-only">Password</label>
         </div>
 
         <div>
-            <button type="submit"
-                style="width:100%;display:block;background-color:#a8f58d;color:#fff;border:none;border-radius:30px;padding:16px 15px;font-size:16px;font-weight:600;font-family:'Raleway',sans-serif;cursor:pointer;text-align:center;transition:0.4s;">
+            <button type="submit" class="auth-form-submit">
                 Create
             </button>
         </div>
