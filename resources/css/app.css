@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Raleway:wght@100..900&family=Poppins:wght@400;600;700&family=Work+Sans:wght@100..900&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -1589,4 +1589,261 @@ button:not(:disabled) {
     font-size: 13px;
     font-weight: 700;
     font-family: 'Raleway', sans-serif;
+}
+
+/* ════════════════════════════════════════
+   CART PAGE
+   ════════════════════════════════════════ */
+
+.cart-right {
+    padding: 2rem 2.2rem;
+}
+
+.bg-gray-01 {
+    background-color: rgba(var(--color-body-text-rgb), 0.05);
+}
+
+/* Title */
+.cart-page-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Table header labels */
+.cart-col-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Item title */
+.cart-item-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Item subtitle */
+.cart-item-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    color: #666;
+    margin: 2px 0 0;
+}
+
+/* Item type (eBook / Hardcopy) */
+.cart-item-type {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    color: #888;
+    margin: 1px 0 0;
+}
+
+/* Item price */
+.cart-item-price {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Remove button */
+.cart-remove-btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    color: #666;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.cart-remove-btn:hover { color: #000; }
+
+/* Continue Shopping button */
+.cart-continue-btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000 !important;
+    background-color: #a8f58d;
+    border: none;
+    border-radius: 0;
+    padding: 14px 24px;
+    text-decoration: none !important;
+    display: block;
+    width: auto;
+    margin: 0 3.5rem 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+    z-index: 1;
+}
+.cart-continue-btn:hover { opacity: 0.85; color: #000 !important; }
+
+/* Textarea */
+.cart-textarea {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    color: #333;
+    border: 1px solid rgba(var(--color-body-text-rgb), 0.15);
+    border-radius: 6px;
+    padding: 10px 12px;
+    resize: vertical;
+    outline: none;
+    background: #fff;
+}
+.cart-textarea:focus { border-color: rgba(var(--color-body-text-rgb), 0.4); }
+
+/* Coupon label */
+.cart-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Coupon input */
+.cart-coupon-input {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    color: #333;
+    border: 1px solid rgba(var(--color-body-text-rgb), 0.2);
+    border-radius: 6px;
+    padding: 9px 12px;
+    outline: none;
+    background: #fff;
+}
+.cart-coupon-input:focus { border-color: rgba(var(--color-body-text-rgb), 0.5); }
+
+/* Save button */
+.cart-save-btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #000;
+    background: #a8f58d;
+    border: none;
+    border-radius: 0;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+.cart-save-btn:hover { opacity: 0.8; }
+
+/* Total label & value */
+.cart-total-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.cart-total-value {
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #000;
+}
+
+/* Checkout button */
+.cart-checkout-btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #000;
+    background: #a8f58d;
+    border: none;
+    border-radius: 0;
+    padding: 14px 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+}
+.cart-checkout-btn:hover { opacity: 0.85; }
+
+/* Payment icon wrapper with tooltip */
+.payment-icon-wrap {
+    position: relative;
+    display: inline-flex;
+}
+.payment-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    font-size: 11px;
+    font-family: 'Raleway', sans-serif;
+    white-space: nowrap;
+    padding: 3px 8px;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 10;
+}
+.payment-icon-wrap:hover .payment-tooltip { display: block; }
+
+/* ── Auth form (register page) ── */
+.auth-form-input {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    box-sizing: border-box;
+}
+.auth-form-input:focus {
+    border-color: #a8f58d;
+    box-shadow: 0 0 0 2px rgba(168,245,141,0.3);
+}
+.auth-form-submit {
+    width: 100%;
+    background-color: #a8f58d;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.auth-form-submit:hover { opacity: 0.85; }
+
+/* ── Dabba background (logotherapy page) ── */
+.dabba-section-bg {
+    background-image: url('/images/dabba.webp');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* ── Counselling default background ── */
+.counselling-default-bg {
+    background-image: url('/images/conselling_1_small.webp');
 }

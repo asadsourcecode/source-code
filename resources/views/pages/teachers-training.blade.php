@@ -1,6 +1,8 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', ($page?->meta_title ?: $page?->title ?: "Teacher's Training") . ' | ICE')
+@section('meta_description', $page->meta_description)
+@section('meta_keywords', $page->meta_keywords)
 
 @section('content')
     <div class="teachers-training-bg" @if($bgStyle) style="{{ $bgStyle }}" @endif>

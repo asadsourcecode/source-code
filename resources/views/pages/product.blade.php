@@ -74,15 +74,15 @@
 
                     {{-- Quantity --}}
                     <div class="productqqty product-form__item product-form__item--quantity mb-2 mt-3">
-                        <p class="text-black mb-2" style="font-weight:900; font-size:20px;">Quantity</p>
+                        <p class="text-black mb-2 font-black text-[20px]">Quantity</p>
                         <div class="js-qty">
                             <button type="button" class="js-qty__adjust js-qty__adjust--minus" aria-label="Reduce item quantity by one">
-                                <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg-inline--fa fa-minus fa-w-12"><path fill="currentColor" d="M376 232H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h368c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"></path></svg>
+                                <x-icon-minus />
                                 <span class="icon__fallback-text">−</span>
                             </button>
                             <input type="text" value="1" id="Quantity" name="quantity" pattern="[0-9]*" data-line="" class="js-qty__input" aria-live="polite">
                             <button type="button" class="js-qty__adjust js-qty__adjust--plus" aria-label="Increase item quantity by one">
-                                <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg-inline--fa fa-plus fa-w-12"><path fill="currentColor" d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"></path></svg>
+                                <x-icon-plus />
                                 <span class="icon__fallback-text">+</span>
                             </button>
                         </div>
