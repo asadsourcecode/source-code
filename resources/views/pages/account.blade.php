@@ -21,6 +21,13 @@
                 <p class="font-['Raleway',sans-serif] text-[0.95rem] text-[#333]">{{ $user->name }}</p>
 
                 <div class="mt-7 flex flex-col gap-3 items-start">
+                    @if(auth()->user()->role === 'student')
+                    <a href="{{ route('student.dashboard') }}" class="bg-[#216C22] text-white font-['Raleway',sans-serif] text-[0.9rem] font-semibold px-[22px] py-[10px] rounded-md no-underline">
+                        Student Dashboard
+                    </a>
+                    @endif
+
+
                     <a href="#" class="bg-[#e8f0fe] text-[#333] font-['Raleway',sans-serif] text-[0.9rem] px-[22px] py-[10px] rounded-md no-underline border border-[#d0d8f0]">
                         View Addresses
                     </a>

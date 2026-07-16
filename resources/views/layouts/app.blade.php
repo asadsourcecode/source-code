@@ -38,14 +38,27 @@
                 <h2 style="text-align:center;font-size:2rem;font-weight:500;font-family:'Raleway',sans-serif;">LOGIN</h2>
                 <p style="text-align:center;margin-top:12px;font-size:1rem;font-family:'Raleway',sans-serif;">Please enter your e-mail and password:</p>
 
+                {{-- Student / Teacher tabs --}}
+                <div style="display:flex;gap:12px;margin-top:24px;">
+                    <button type="button" id="login-tab-student" onclick="switchLoginTab('student')"
+                        style="flex:1;padding:10px;font-family:'Raleway',sans-serif;font-size:14px;font-weight:600;border-radius:30px;border:2px solid #a8f58d;background:#a8f58d;color:#111;cursor:pointer;transition:0.3s;">
+                        Student
+                    </button>
+                    <button type="button" id="login-tab-teacher" onclick="switchLoginTab('teacher')"
+                        style="flex:1;padding:10px;font-family:'Raleway',sans-serif;font-size:14px;font-weight:600;border-radius:30px;border:2px solid #a8f58d;background:#fff;color:#111;cursor:pointer;transition:0.3s;">
+                        Teacher
+                    </button>
+                </div>
+
                 @if ($errors->has('email'))
                 <p style="margin-top:16px;text-align:center;color:#dc2626;font-size:0.875rem;font-family:'Raleway',sans-serif;">
                     {{ $errors->first('email') }}
                 </p>
                 @endif
 
-                <form action="{{ route('login') }}" method="POST" style="margin-top:32px;display:flex;flex-direction:column;gap:32px;">
+                <form action="{{ route('login') }}" method="POST" style="margin-top:24px;display:flex;flex-direction:column;gap:24px;">
                     @csrf
+                    <input type="hidden" name="login_type" id="login_type" value="student">
 
                     <div>
                         <input type="email" name="email" id="LoginEmail" placeholder="Email"
@@ -70,15 +83,33 @@
                         </button>
                     </div>
                 </form>
+
+                <p style="margin-top:20px;text-align:center;font-size:0.875rem;font-family:'Raleway',sans-serif;">
+                    Don't have an account?
+                    <a href="{{ route('register') }}" style="font-weight:600;text-decoration:none;color:#111;">Register</a>
+                </p>
             </div>
         </div>
 
         <script>
-            function openLoginModal()  { document.getElementById('loginModal').style.display='flex'; document.body.style.overflow='hidden'; }
-            function closeLoginModal() { document.getElementById('loginModal').style.display='none'; document.body.style.overflow=''; }
+            function openLoginModal(tab) {
+                document.getElementById('loginModal').style.display='flex';
+                document.body.style.overflow='hidden';
+                switchLoginTab(tab || 'student');
+            }
+            function closeLoginModal() {
+                document.getElementById('loginModal').style.display='none';
+                document.body.style.overflow='';
+            }
+            function switchLoginTab(type) {
+                document.getElementById('login_type').value = type;
+                var isStudent = type === 'student';
+                document.getElementById('login-tab-student').style.background = isStudent ? '#a8f58d' : '#fff';
+                document.getElementById('login-tab-teacher').style.background = isStudent ? '#fff' : '#a8f58d';
+            }
             document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLoginModal(); });
             @if ($errors->has('email'))
-                openLoginModal();
+                openLoginModal('{{ old('login_type', 'student') }}');
             @endif
         </script>
         @endguest

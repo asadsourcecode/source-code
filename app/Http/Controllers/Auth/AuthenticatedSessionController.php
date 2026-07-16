@@ -36,7 +36,13 @@ class AuthenticatedSessionController extends Controller
             'user_agent' => $request->userAgent(),
         ]);
 
-        return redirect()->intended(route('account'));
+        $user = Auth::user();
+
+        return match($user->role) {
+            'teacher' => redirect()->route('teacher.dashboard'),
+            'student' => redirect('/'),
+            default   => redirect()->intended(route('account')),
+        };
     }
 
     /**
