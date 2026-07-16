@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Student\DashboardController;
+use App\Livewire\Student\Dashboard;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('student')
+Route::middleware(['auth', 'role:student'])
+    ->prefix('student')
     ->name('student.')
     ->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', Dashboard::class)->name('dashboard');
     });

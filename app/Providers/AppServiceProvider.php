@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
 
         View::share([
             'siteSettings' => $site->settings(),
+            'contactPhone' => $site->contactPhone(),
+            'contactEmail' => $site->contactEmail(),
             'headerMenu'   => $site->headerMenu(),
             'footerMenu'   => $site->footerMenu(),
         ]);

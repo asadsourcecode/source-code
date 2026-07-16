@@ -1,8 +1,3 @@
-@php
-    $contactPhone = $siteSettings?->phone ?? '+45 50106941';
-    $contactEmail = $siteSettings?->email ?? 'Info@characterbuilding.education';
-@endphp
-
 <!-- Mobile Drawer Overlay -->
 <div id="drawer-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
 
@@ -21,14 +16,7 @@
     <!-- Nav Items -->
     <nav>
         @foreach ($headerMenu as $item)
-            @php
-                $hasChildren       = $item->children->isNotEmpty();
-                $isIntro           = strtolower($item->title) === 'intro';
-                $isBooks           = strtolower($item->title) === 'books';
-                $isCounselling     = str_replace(' ', '', strtolower($item->title)) === 'counselling';
-            @endphp
-
-            @if ($hasChildren || $isIntro || $isBooks || $isCounselling)
+            @if ($item->children->isNotEmpty() || $item->isIntro() || $item->isBooks() || $item->isCounselling())
                 <div class="drawer-accordion">
                     <button class="drawer-accordion-btn w-full flex items-center justify-between px-5 py-4 text-[15px] font-medium text-gray-900 border-b border-gray-200 hover:bg-gray-50">
                         <span>{{ $item->title }}</span>
@@ -37,12 +25,12 @@
                         </svg>
                     </button>
                     <div class="drawer-accordion-content hidden bg-gray-50">
-                        @if ($isIntro)
+                        @if ($item->isIntro())
                             <a href="{{ route('new-subject') }}" class="block px-8 py-3 text-[14px] text-gray-700 border-b border-gray-100 hover:bg-gray-100">New Subject</a>
-                        @elseif ($isBooks)
+                        @elseif ($item->isBooks())
                             <a href="{{ route('ebooks') }}" class="block px-8 py-3 text-[14px] text-gray-700 border-b border-gray-100 hover:bg-gray-100">E-books</a>
                             <a href="{{ route('hard-copies') }}" class="block px-8 py-3 text-[14px] text-gray-700 border-b border-gray-100 hover:bg-gray-100">Hard Copies</a>
-                        @elseif ($isCounselling)
+                        @elseif ($item->isCounselling())
                             <a href="{{ route('logotherapy') }}" class="block px-8 py-3 text-[14px] text-gray-700 border-b border-gray-100 hover:bg-gray-100">Logotherapy</a>
                         @else
                             @foreach ($item->children as $child)
@@ -230,14 +218,7 @@
                 <nav class="hidden lg:flex flex-1 flex-wrap items-center gap-1 justify-start ml-[40px]">
 
                     @foreach ($headerMenu as $item)
-                        @php
-                            $hasChildren       = $item->children->isNotEmpty();
-                            $isIntro           = strtolower($item->title) === 'intro';
-                            $isBooks           = strtolower($item->title) === 'books';
-                            $isCounselling     = str_replace(' ', '', strtolower($item->title)) === 'counselling';
-                        @endphp
-
-                        @if ($hasChildren || $isIntro || $isBooks || $isCounselling)
+                        @if ($item->children->isNotEmpty() || $item->isIntro() || $item->isBooks() || $item->isCounselling())
                             <div class="relative desktop-dropdown-parent">
                                 <a
                                     href="{{ $item->route ? route($item->route) : $item->url }}"
@@ -249,14 +230,14 @@
                                     </svg>
                                 </a>
                                 <div class="desktop-dropdown">
-                                    @if ($isIntro)
+                                    @if ($item->isIntro())
                                         <div class="bg-[#232323] min-w-[200px] px-5 py-3">
                                             <a href="{{ route('new-subject') }}" class="relative inline-block text-white text-[14px] font-medium
                                                 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0
                                                 after:bg-[#C9F9B6] after:transition-all after:duration-300
                                                 hover:after:w-full">New Subject</a>
                                         </div>
-                                    @elseif ($isBooks)
+                                    @elseif ($item->isBooks())
                                         <div class="bg-[#3B1A07] min-w-[200px] px-5 py-3 flex flex-col gap-3 items-start">
                                             <a href="{{ route('ebooks') }}" class="relative inline-block text-white text-[14px] font-medium
                                                 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0
@@ -267,7 +248,7 @@
                                                 after:bg-[#C9F9B6] after:transition-all after:duration-300
                                                 hover:after:w-full">Hard Copies</a>
                                         </div>
-                                    @elseif ($isCounselling)
+                                    @elseif ($item->isCounselling())
                                         <div class="bg-[#232323] min-w-[200px] px-5 py-3">
                                             <a href="{{ route('logotherapy') }}" class="relative inline-block text-white text-[14px] font-medium
                                                 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0

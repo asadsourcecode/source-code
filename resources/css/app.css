@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Raleway:wght@100..900&family=Poppins:wght@400;600;700&family=Work+Sans:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Raleway:wght@100..900&family=Poppins:wght@400;600;700&family=Work+Sans:wght@100..900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -1846,4 +1846,107 @@ button:not(:disabled) {
 /* ── Counselling default background ── */
 .counselling-default-bg {
     background-image: url('/images/conselling_1_small.webp');
+}
+
+/* ════════════════════════════════════════
+   PORTAL DASHBOARDS — RESPONSIVE
+   ════════════════════════════════════════ */
+
+.portal-main {
+    padding: 24px 64px 64px;
+}
+.portal-navbar-inner {
+    padding-left: 64px;
+    padding-right: 64px;
+}
+.portal-hero-card    { display: flex; }
+.portal-schedule-row { display: flex; gap: 20px; margin-bottom: 20px; }
+.portal-days-wrap    { display: flex; gap: 8px; flex: 1; min-width: 0; }
+.portal-session-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 16px;
+}
+.portal-books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 1279px) {
+    .portal-main         { padding: 20px 40px 56px; }
+    .portal-navbar-inner { padding-left: 40px; padding-right: 40px; }
+    .portal-books-grid   { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1023px) {
+    .portal-main            { padding: 20px 28px 48px; }
+    .portal-navbar-inner    { padding-left: 28px; padding-right: 28px; }
+    .portal-schedule-row    { flex-direction: column; }
+    .portal-upper-section   { flex-direction: column !important; }
+    .portal-attendance-card { width: 100% !important; }
+    /* 3-col grid: subject | time | buttons — students hidden */
+    .portal-session-grid    { grid-template-columns: 1fr auto auto; }
+    .portal-session-col-2   { display: none; }
+}
+
+@media (max-width: 767px) {
+    .portal-main            { padding: 16px 16px 40px; }
+    .portal-navbar-inner    { padding-left: 16px; padding-right: 16px; gap: 8px; }
+
+    /* Scrollable nav tabs — right icons stay fixed */
+    .portal-navbar-inner nav {
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+        gap: 6px;
+    }
+    .portal-navbar-inner nav::-webkit-scrollbar { display: none; }
+    .portal-navbar-inner nav a {
+        flex-shrink: 0;
+        font-size: 11px !important;
+        padding: 4px 10px !important;
+        white-space: nowrap;
+    }
+
+    .portal-avatar-name  { display: none; }
+
+    /* Hero card: stack vertically, image shows below */
+    .portal-hero-card    { flex-direction: column; }
+    .portal-hero-image   {
+        display: flex !important;
+        justify-content: center;
+        padding: 0 16px 20px;
+    }
+    .portal-hero-image img { width: 180px !important; }
+
+    .portal-days-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory;
+    }
+    .portal-days-wrap > button {
+        flex: none;
+        min-width: 56px;
+        scroll-snap-align: start;
+    }
+
+    /* Session rows: single column, hide students + time, buttons side by side */
+    .portal-session-grid         { grid-template-columns: 1fr; gap: 8px; }
+    .portal-session-col-2,
+    .portal-session-col-3        { display: none !important; }
+    .portal-session-col-4        { flex-direction: row !important; justify-content: flex-start !important; gap: 8px !important; }
+    .portal-session-col-4 button { width: auto !important; flex: 1; }
+
+    .portal-books-grid { grid-template-columns: repeat(2, 1fr); }
+    .portal-book-img   { height: 180px !important; }
+}
+
+@media (max-width: 479px) {
+    .portal-books-grid { grid-template-columns: 1fr; }
 }

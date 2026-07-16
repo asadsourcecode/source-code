@@ -30,6 +30,21 @@ class MenuItem extends Model
         return $this->belongsTo(Page::class);
     }
 
+    public function isIntro(): bool
+    {
+        return str_contains(strtolower($this->title), 'intro');
+    }
+
+    public function isBooks(): bool
+    {
+        return str_contains(strtolower($this->title), 'book');
+    }
+
+    public function isCounselling(): bool
+    {
+        return str_contains(strtolower($this->title), 'counsel');
+    }
+
     public function getUrlAttribute(): string
     {
         if ($this->custom_url) {

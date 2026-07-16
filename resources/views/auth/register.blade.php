@@ -8,24 +8,8 @@
     <h1 class="text-4xl font-medium font-['Raleway',sans-serif]">REGISTER</h1>
     <p class="mt-3 text-base font-['Raleway',sans-serif]">Please fill in the fields below</p>
 
-    <!-- Tabs -->
-    <div class="flex gap-4 mt-8 w-full max-w-2xl">
-        <button type="button" onclick="switchTab('user')" id="tab-user" class="tab-btn flex-1 py-3 px-4 text-center font-['Raleway',sans-serif] font-medium border-2 border-[#a8f58d] rounded-full transition-all duration-300 bg-[#a8f58d] text-black">
-            User
-        </button>
-        <button type="button" onclick="switchTab('student')" id="tab-student" class="tab-btn flex-1 py-3 px-4 text-center font-['Raleway',sans-serif] font-medium border-2 border-[#a8f58d] rounded-full transition-all duration-300 bg-white text-black hover:bg-[#a8f58d]">
-            Student
-        </button>
-        <button type="button" onclick="switchTab('teacher')" id="tab-teacher" class="tab-btn flex-1 py-3 px-4 text-center font-['Raleway',sans-serif] font-medium border-2 border-[#a8f58d] rounded-full transition-all duration-300 bg-white text-black hover:bg-[#a8f58d]">
-            Teacher
-        </button>
-    </div>
-
     <form method="POST" action="{{ route('register') }}" class="w-full max-w-2xl mt-8 flex flex-col gap-8">
         @csrf
-
-        <!-- Hidden field for user type -->
-        <input type="hidden" name="user_type" id="user_type" value="user">
 
         <div>
             <input type="text" name="first_name" id="first_name" placeholder="First name" autofocus
@@ -86,30 +70,4 @@
     </p>
 </div>
 </div>
-
-<script>
-function switchTab(type) {
-    // Reset all tabs
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-[#a8f58d]');
-        btn.classList.add('bg-white');
-    });
-
-    // Activate selected tab
-    const activeTab = document.getElementById('tab-' + type);
-    activeTab.classList.remove('bg-white');
-    activeTab.classList.add('bg-[#a8f58d]');
-
-    // Update hidden field
-    document.getElementById('user_type').value = type;
-}
-
-// Set initial value from old input if exists
-document.addEventListener('DOMContentLoaded', function() {
-    const oldType = '{{ old('user_type') }}';
-    if (oldType) {
-        switchTab(oldType);
-    }
-});
-</script>
 @endsection
