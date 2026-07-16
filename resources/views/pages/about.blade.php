@@ -1,11 +1,13 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', ($page->meta_title ?: $page->title) . ' | ICE')
+@section('meta_description', $page->meta_description)
+@section('meta_keywords', $page->meta_keywords)
 
 @section('content')
 
 <div class="min-h-screen pt-[80px]"
-    style="background-image: url('{{ $bgImage }}'); background-size: 100% auto; background-position: top center; background-repeat: repeat-y;">
+    >
 
     <div class="flex justify-center">
     <div class="w-full sm:w-10/12 lg:w-8/12 px-4">
@@ -62,7 +64,7 @@
             <img src="{{ $logoImage }}"
                 alt="ICE Publishers - Integrated Character Education"
                 class="w-full h-auto"
-                style="margin: 20px; margin-bottom: 39px;">
+                >
         </div>
 
     </div>

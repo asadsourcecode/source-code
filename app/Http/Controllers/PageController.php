@@ -5,115 +5,103 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Product;
 use App\Models\ProductSection;
-use App\Services\AboutService;
-use App\Services\EbooksService;
-use App\Services\HardCopiesService;
-use App\Services\MethodologyService;
-use App\Services\NewSubjectService;
-use App\Services\AudioStoriesService;
-use App\Services\TeachersTrainingService;
-use App\Services\HomeschoolingService;
-use App\Services\OnlineClassesService;
-use App\Services\LogotherapyService;
-use App\Services\ContactService;
-use App\Services\CounsellingService;
-use App\Services\IntroductionService;
-use App\Services\PricingService;
+use App\Services\Website\AboutService;
+use App\Services\Website\EbooksService;
+use App\Services\Website\HardCopiesService;
+use App\Services\Website\MethodologyService;
+use App\Services\Website\NewSubjectService;
+use App\Services\Website\AudioStoriesService;
+use App\Services\Website\TeachersTrainingService;
+use App\Services\Website\HomeschoolingService;
+use App\Services\Website\OnlineClassesService;
+use App\Services\Website\LogotherapyService;
+use App\Services\Website\ContactService;
+use App\Services\Website\CounsellingService;
+use App\Services\Website\HomeService;
+use App\Services\Website\IntroductionService;
+use App\Services\Website\PricingService;
 use Illuminate\View\View;
 
 class PageController extends Controller
 {
-    public function __construct(
-        private AboutService $aboutService,
-        private EbooksService $ebooksService,
-        private HardCopiesService $hardCopiesService,
-        private MethodologyService $methodologyService,
-        private NewSubjectService $newSubjectService,
-        private AudioStoriesService $audioStoriesService,
-        private TeachersTrainingService $teachersTrainingService,
-        private OnlineClassesService $onlineClassesService,
-        private HomeschoolingService $homeschoolingService,
-        private LogotherapyService $logotherapyService,
-        private ContactService $contactService,
-        private CounsellingService $counsellingService,
-        private IntroductionService $introductionService,
-        private PricingService $pricingService,
-    ) {}
-
-    public function about(): View
+    public function home(HomeService $homeService): View
     {
-        return view('pages.about', $this->aboutService->getData());
+        return view('welcome', $homeService->getData());
     }
 
-    public function methodology(): View
+    public function about(AboutService $aboutService): View
     {
-        return view('pages.methodology', $this->methodologyService->getData());
+        return view('pages.about', $aboutService->getData());
     }
 
-    public function ebooks(): View
+    public function methodology(MethodologyService $methodologyService): View
     {
-        return view('pages.ebooks', $this->ebooksService->getData());
+        return view('pages.methodology', $methodologyService->getData());
     }
 
-    public function hardCopies(): View
+    public function ebooks(EbooksService $ebooksService): View
     {
-        return view('pages.hard-copies', $this->hardCopiesService->getData());
+        return view('pages.ebooks', $ebooksService->getData());
     }
 
-    public function newSubject(): View
+    public function hardCopies(HardCopiesService $hardCopiesService): View
     {
-        return view('pages.new-subject', $this->newSubjectService->getData());
+        return view('pages.hard-copies', $hardCopiesService->getData());
     }
 
-    public function onlineClasses(): View
+    public function newSubject(NewSubjectService $newSubjectService): View
     {
-        return view('pages.online-classes', $this->onlineClassesService->getData());
+        return view('pages.new-subject', $newSubjectService->getData());
     }
 
-    public function teachersTraining(): View
+    public function onlineClasses(OnlineClassesService $onlineClassesService): View
     {
-        return view('pages.teachers-training', $this->teachersTrainingService->getData());
+        return view('pages.online-classes', $onlineClassesService->getData());
     }
 
-    public function audioStories(): View
+    public function teachersTraining(TeachersTrainingService $teachersTrainingService): View
     {
-        return view('pages.audio-stories', $this->audioStoriesService->getData());
+        return view('pages.teachers-training', $teachersTrainingService->getData());
     }
 
-    public function homeschooling(): View
+    public function audioStories(AudioStoriesService $audioStoriesService): View
     {
-        return view('pages.homeschooling', $this->homeschoolingService->getData());
+        return view('pages.audio-stories', $audioStoriesService->getData());
     }
 
-    public function introduction(): View
+    public function homeschooling(HomeschoolingService $homeschoolingService): View
     {
-        return view('pages.introduction', $this->introductionService->getData());
+        return view('pages.homeschooling', $homeschoolingService->getData());
     }
 
-    public function logotherapy(): View
+    public function introduction(IntroductionService $introductionService): View
     {
-        return view('pages.logotherapy', $this->logotherapyService->getData());
+        return view('pages.introduction', $introductionService->getData());
     }
 
-    public function counselling(): View
+    public function logotherapy(LogotherapyService $logotherapyService): View
     {
-        return view('pages.counselling', $this->counsellingService->getData());
+        return view('pages.logotherapy', $logotherapyService->getData());
     }
 
-    public function contact(): View
+    public function counselling(CounsellingService $counsellingService): View
     {
-        return view('pages.contact', $this->contactService->getData());
+        return view('pages.counselling', $counsellingService->getData());
     }
 
-    public function pricing(): View
+    public function contact(ContactService $contactService): View
     {
-
-        return view('pages.pricing', $this->pricingService->getData());
+        return view('pages.contact', $contactService->getData());
     }
 
-    public function pricingPreview(): View
+    public function pricing(PricingService $pricingService): View
     {
-        return view('pages.pricing', $this->pricingService->getData(preview: true));
+        return view('pages.pricing', $pricingService->getData());
+    }
+
+    public function pricingPreview(PricingService $pricingService): View
+    {
+        return view('pages.pricing', $pricingService->getData(preview: true));
     }
 
     public function register(): View

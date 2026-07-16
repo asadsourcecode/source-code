@@ -1,6 +1,8 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', ($page->meta_title ?: $page->title) . ' | ICE')
+@section('meta_description', $page->meta_description)
+@section('meta_keywords', $page->meta_keywords)
 
 @section('content')
     <div class="full section-start bg-white">
@@ -61,7 +63,7 @@
                 <!-- Three Hypotheses Section -->
                 <div class="col-lg-12 m-0 p-0 custom-blk-customliquid_TdiRjT">
                     <div class="grid__item-inner grid__item-inner--customliquid">
-                        <div class="metha_1 p-8 relative overflow-hidden" @if($metha1Image) style="background-image: none;" @endif>
+                        <div class="metha_1 p-8 relative overflow-hidden {{ $metha1Image ? 'bg-none' : '' }}">
                             @if($metha1Image)
                                 <img src="{{ $metha1Image }}" class="absolute inset-0 w-full h-full object-cover" alt="" aria-hidden="true">
                             @endif

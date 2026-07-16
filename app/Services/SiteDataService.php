@@ -8,9 +8,21 @@ use Illuminate\Database\Eloquent\Collection;
 
 class SiteDataService
 {
+    private ?Setting $cachedSettings = null;
+
     public function settings(): ?Setting
     {
-        return Setting::site();
+        return $this->cachedSettings ??= Setting::site();
+    }
+
+    public function contactPhone(): string
+    {
+        return $this->settings()?->phone ?? '+45 50106941';
+    }
+
+    public function contactEmail(): string
+    {
+        return $this->settings()?->email ?? 'Info@characterbuilding.education';
     }
 
     public function headerMenu(): Collection
@@ -32,7 +44,6 @@ class SiteDataService
         return $items->map(function ($item) {
             $normalizedTitle = strtolower(str_replace(' ', '', $item->title));
 
-            // Match by containing keywords instead of exact match
             if (str_contains($normalizedTitle, 'teacher') && str_contains($normalizedTitle, 'training')) {
                 $item->route = 'teachers-training';
             } elseif (str_contains($normalizedTitle, 'online') && str_contains($normalizedTitle, 'class')) {
@@ -41,15 +52,15 @@ class SiteDataService
                 $item->route = 'audio-stories';
             } elseif (str_contains($normalizedTitle, 'homeschool')) {
                 $item->route = 'homeschooling';
-            } elseif (str_contains($normalizedTitle, 'intro')) {
+            } elseif ($item->isIntro()) {
                 $item->route = 'introduction';
             } elseif (str_contains($normalizedTitle, 'contact')) {
                 $item->route = 'contact';
-            } elseif (str_contains($normalizedTitle, 'counsel')) {
+            } elseif ($item->isCounselling()) {
                 $item->route = 'counselling';
             } elseif (str_contains($normalizedTitle, 'pricing')) {
                 $item->route = 'pricing';
-            } elseif (str_contains($normalizedTitle, 'book')) {
+            } elseif ($item->isBooks()) {
                 $item->route = null;
             } else {
                 $item->route = null;

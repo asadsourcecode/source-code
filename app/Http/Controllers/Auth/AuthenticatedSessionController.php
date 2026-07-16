@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\UserLog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,20 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('account'));
+        UserLog::create([
+            'user_id'    => Auth::id(),
+            'event'      => 'login',
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+        ]);
+
+        $user = Auth::user();
+
+        return match($user->role) {
+            'teacher' => redirect()->route('teacher.dashboard'),
+            'student' => redirect('/'),
+            default   => redirect()->intended(route('account')),
+        };
     }
 
     /**
