@@ -8,7 +8,17 @@
 
         <h1 class="cart-page-title">Your Cart</h1>
 
-        <div class="flex flex-col md:flex-row gap-8 mt-6">
+        {{-- Checkout success banner (shown inline, no redirect) --}}
+        <div id="checkout-success" class="hidden mt-6 rounded-xl border border-green-200 bg-green-50 px-6 py-4 flex items-center justify-between gap-4">
+            <p class="text-[15px] text-green-800">
+                <span class="font-bold">Purchase successful!</span> Your book has been added to your library.
+            </p>
+            <a id="checkout-success-link" href="#" class="cart-checkout-btn whitespace-nowrap">
+                Go to My Books
+            </a>
+        </div>
+
+        <div id="cart-content" class="flex flex-col md:flex-row gap-8 mt-6">
 
             {{-- LEFT: Cart Items --}}
             <div class="flex-1">
@@ -175,7 +185,48 @@
     }
 
     function checkout() {
-        alert('Checkout coming soon!');
+        const cart = getCart();
+        if (cart.length === 0) {
+            alert('Your cart is empty.');
+            return;
+        }
+
+        fetch('{{ route('checkout') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            },
+            body: JSON.stringify({
+                items: cart.map(item => ({
+                    product_id: item.product_id,
+                    quantity: item.qty,
+                    type: item.type,
+                })),
+            }),
+        })
+        .then(async response => {
+            if (response.status === 401) {
+                window.location.href = '{{ route('login') }}';
+                return;
+            }
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.message || 'Checkout failed. Please try again.');
+                return;
+            }
+
+            saveCart([]);
+            renderCart();
+
+            document.getElementById('checkout-success-link').href = data.dashboard_url;
+            document.getElementById('checkout-success').classList.remove('hidden');
+            document.getElementById('checkout-success').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        })
+        .catch(() => alert('Something went wrong. Please try again.'));
     }
 
     renderCart();

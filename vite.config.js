@@ -10,7 +10,13 @@ export default defineConfig(({ command }) => ({
 
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+                'resources/js/book-reader.js',
+                'resources/js/exercise-builder.js',
+                'resources/js/assignment-fill.js',
+            ],
             refresh: true,
             fonts: [
                 bunny('Instrument Sans', {

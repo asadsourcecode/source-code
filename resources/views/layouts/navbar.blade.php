@@ -156,7 +156,7 @@
                     </svg>
                 </div>
 
-                <a href="#cart" class="hidden lg:block hover:text-[#C9F9B6]">
+                <a href="{{ route('cart') }}" class="hidden lg:block hover:text-[#C9F9B6]">
                     <i class="fa-solid fa-shopping-cart"></i>
                 </a>
 

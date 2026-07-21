@@ -172,7 +172,7 @@
 
 </div>
 
-{{-- ── 3. My Books — full-width 4-column grid ───────────────────────── --}}
+{{-- ── 3. My Books — real data: books your assigned students purchased ─── --}}
 <div>
 
     <div class="flex items-end justify-between mb-4 pb-[17px] border-b border-[#C0C9B94D]">
@@ -181,40 +181,18 @@
                 My Books
             </h2>
             <p class="font-['Work_Sans',sans-serif] font-semibold text-[16px] text-[#40493D] mt-0.5">
-                Quickly access the books you teach
+                Books your assigned students have purchased
             </p>
         </div>
     </div>
 
-    @php
-        $books = [
-            [
-                'title'    => 'Apocalypse For Everyone',
-                'image'    => 'book1.webp',
-                'subject'  => 'Grade 4 – Character Education',
-                'progress' => 65,
-            ],
-            [
-                'title'    => 'The Art Of Storytelling',
-                'image'    => 'book2.webp',
-                'subject'  => 'Grade 5 – Language Arts',
-                'progress' => 40,
-            ],
-            [
-                'title'    => 'Culinary Delights',
-                'image'    => 'book3.webp',
-                'subject'  => 'Grade 3 – Life Skills',
-                'progress' => 80,
-            ],
-            [
-                'title'    => 'Character Building',
-                'image'    => 'book4.webp',
-                'subject'  => 'Grade 6 – Values Education',
-                'progress' => 25,
-            ],
-        ];
-    @endphp
-
+    @if (empty($books))
+        <div class="flex flex-col items-center justify-center py-16 text-center bg-white border-2 border-[#C0C9B94D] rounded-[16px]">
+            <p class="font-['Work_Sans',sans-serif] font-semibold text-[15px] text-[#1B1C1C]">
+                None of your assigned students have purchased a book yet.
+            </p>
+        </div>
+    @else
     <div class="portal-books-grid">
         @foreach ($books as $book)
 
@@ -223,45 +201,63 @@
 
             {{-- Image container: h-293px, p-10px, gap-10px, horizontal --}}
             <div class="flex items-center justify-center h-[293px] p-[10px] gap-[10px] bg-[#F5F7F5] portal-book-img">
-                <img src="{{ asset('images/' . $book['image']) }}"
+                <img src="{{ $book['image'] }}"
                      alt="{{ $book['title'] }}"
                      class="h-full w-full object-contain rounded-[8px]">
             </div>
 
-            {{-- Card body: title + progress + button --}}
+            {{-- Card body: title + unlock control + student list --}}
             <div class="flex flex-col gap-3 p-4">
 
-                {{-- Subject name --}}
                 <div>
                     <p class="font-['Work_Sans',sans-serif] font-bold text-[16px] leading-[25.6px] tracking-normal text-[#1B1C1C]">
                         {{ $book['title'] }}
                     </p>
                     <p class="font-['Work_Sans',sans-serif] font-normal text-[12px] text-[#40493D] mt-0.5">
-                        {{ $book['subject'] }}
+                        {{ $book['total_pages'] }} pages total
                     </p>
                 </div>
 
-                {{-- How much read: progress bar --}}
-                <div>
-                    <div class="flex items-center justify-between mb-1.5">
-                        <span class="font-['Work_Sans',sans-serif] font-medium text-[12px] text-[#8A9490]">Read</span>
-                        <span class="font-['Work_Sans',sans-serif] font-medium text-[12px] text-[#2FE432]">{{ $book['progress'] }}%</span>
-                    </div>
-                    <div class="w-full h-1.5 bg-[#E5EAE3] rounded-full overflow-hidden">
-                        <div class="h-full bg-[#2FE432] rounded-full" style="width: {{ $book['progress'] }}%"></div>
-                    </div>
+                {{-- Class-wide unlock control: applies to every assigned student who owns this book --}}
+                <div class="flex items-center justify-between gap-2 bg-[#F5F7F5] rounded-[8px] px-3 py-2">
+                    <label class="font-['Work_Sans',sans-serif] font-semibold text-[12px] text-[#40493D]">
+                        Unlocked pages
+                    </label>
+                    <input type="number" min="0" max="{{ $book['total_pages'] }}"
+                        value="{{ $book['unlocked_page'] }}"
+                        wire:change="updateUnlockedPage({{ $book['product_id'] }}, $event.target.value)"
+                        class="w-16 text-center border border-[#C0C9B9] rounded-[6px] text-[12px] font-['Work_Sans',sans-serif] py-1">
+                    <span class="font-['Work_Sans',sans-serif] text-[11px] text-[#8A9490]">of {{ $book['total_pages'] }}</span>
                 </div>
 
-                {{-- Open Book button --}}
-                <button class="w-full bg-[#216C22] text-white font-['Work_Sans',sans-serif] font-bold text-[16px] leading-[24px] tracking-normal py-[16px] px-[32px] rounded-[12px] hover:bg-green-900 transition">
-                    Open Book
-                </button>
+                {{-- Assigned students: reading % + an optional bonus-page override beyond the class limit above --}}
+                @if (count($book['students']))
+                <div class="flex flex-col gap-1.5 max-h-[130px] overflow-y-auto">
+                    @foreach ($book['students'] as $student)
+                    <div class="flex items-center justify-between gap-2 text-[11px] font-['Work_Sans',sans-serif]">
+                        <span class="text-[#1B1C1C] truncate">{{ $student['name'] }}</span>
+                        <span class="text-[#8A9490] flex-shrink-0">{{ $student['read_percent'] }}% read</span>
+                        <input type="number" min="0" max="{{ $book['total_pages'] }}"
+                            value="{{ $student['override_page'] }}"
+                            wire:change="updateStudentOverride({{ $student['id'] }}, {{ $book['product_id'] }}, $event.target.value)"
+                            title="Bonus pages for {{ $student['name'] }} beyond the class limit above"
+                            class="w-12 flex-shrink-0 text-center border border-[#C0C9B9] rounded-[6px] py-0.5">
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+
+                <a href="{{ route('teacher.books.builder', $book['slug']) }}"
+                   class="block text-center w-full bg-[#216C22] text-white font-['Work_Sans',sans-serif] font-semibold text-[13px] py-2.5 rounded-full hover:bg-green-900 transition">
+                    Build Exercises
+                </a>
 
             </div>
         </div>
 
         @endforeach
     </div>
+    @endif
 
 </div>
 

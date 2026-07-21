@@ -91,6 +91,7 @@
                     {{-- Add to Cart --}}
                     <button type="button" id="add-to-cart-btn"
                         class="addtocart_cus_coming product-form__cart-submit btn-theme"
+                        data-product-id="{{ $product->id }}"
                         data-title="{{ $product->title }}"
                         data-subtitle="{{ $product->subtitle }}"
                         data-image="{{ $product->imageUrl() }}"
@@ -198,17 +199,18 @@
                             : btn.dataset.price;
 
         const item = {
-            id:       Date.now(),
-            title:    btn.dataset.title,
-            subtitle: btn.dataset.subtitle,
-            image:    btn.dataset.image,
-            type:     type,
-            price:    parseFloat(price),
-            qty:      qty,
+            id:         Date.now(),
+            product_id: btn.dataset.productId ? parseInt(btn.dataset.productId) : null,
+            title:      btn.dataset.title,
+            subtitle:   btn.dataset.subtitle,
+            image:      btn.dataset.image,
+            type:       type,
+            price:      parseFloat(price),
+            qty:        qty,
         };
 
         let cart = JSON.parse(localStorage.getItem('ice_cart') || '[]');
-        const existing = cart.find(i => i.title === item.title && i.type === item.type);
+        const existing = cart.find(i => i.product_id === item.product_id && i.type === item.type);
         if (existing) {
             existing.qty += item.qty;
         } else {

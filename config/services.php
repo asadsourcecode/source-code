@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'characterbuilding' => [
+        // Sibling app's private storage/app directory — read directly on disk (not via
+        // a public URL) so page images can be served only through an authenticated route.
+        'storage_path' => env('CHARACTERBUILDING_STORAGE_PATH', base_path('../characterbuilding/storage/app')),
+    ],
+
 ];

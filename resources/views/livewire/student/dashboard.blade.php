@@ -143,9 +143,10 @@
                 <p class="font-['Work_Sans',sans-serif] font-normal text-[12px] text-[#8A9490] mb-4">
                     Lorem ipsum dolor sit, consectetur.
                 </p>
-                <button class="w-full border border-[#216C22] text-[#216C22] font-['Work_Sans',sans-serif] font-semibold text-sm leading-[19.6px] tracking-normal py-2.5 rounded-full hover:bg-green-50 transition">
+                <a href="{{ route('student.schedule') }}" wire:navigate
+                   class="block w-full text-center border border-[#216C22] text-[#216C22] font-['Work_Sans',sans-serif] font-semibold text-sm leading-[19.6px] tracking-normal py-2.5 rounded-full hover:bg-green-50 transition">
                     View Full Schedule
-                </button>
+                </a>
             </div>
         </div>
 
@@ -221,21 +222,27 @@
     </div>
 
     @php
-        $books = [
-            ['title' => 'Apocalypse For Everyone', 'image' => 'book1.webp', 'subject' => 'Grade 4 – Character Education', 'progress' => 65],
-            ['title' => 'The Art Of Storytelling',  'image' => 'book2.webp', 'subject' => 'Grade 5 – Language Arts',       'progress' => 40],
-            ['title' => 'Culinary Delights',         'image' => 'book3.webp', 'subject' => 'Grade 3 – Life Skills',         'progress' => 80],
-            ['title' => 'Character Building',        'image' => 'book4.webp', 'subject' => 'Grade 6 – Values Education',    'progress' => 25],
-        ];
+        $books = $data['books'] ?? [];
     @endphp
 
+    @if (empty($books))
+        <div class="flex flex-col items-center justify-center py-16 text-center bg-white border-2 border-[#C0C9B94D] rounded-[16px]">
+            <p class="font-['Work_Sans',sans-serif] font-semibold text-[15px] text-[#1B1C1C]">
+                You haven't purchased any books yet.
+            </p>
+            <a href="{{ route('pricing') }}"
+               class="mt-4 bg-[#216C22] text-white font-['Work_Sans',sans-serif] font-semibold text-[13px] px-5 py-2.5 rounded-full hover:bg-green-900 transition">
+                Browse Books
+            </a>
+        </div>
+    @else
     <div class="portal-books-grid">
         @foreach ($books as $book)
 
         <div class="flex flex-col bg-white border-2 border-[#C0C9B94D] rounded-[16px] overflow-hidden">
 
             <div class="flex items-center justify-center h-[293px] p-[10px] gap-[10px] bg-[#F5F7F5] portal-book-img">
-                <img src="{{ asset('images/' . $book['image']) }}"
+                <img src="{{ $book['image'] }}"
                      alt="{{ $book['title'] }}"
                      class="h-full w-full object-contain rounded-[8px]">
             </div>
@@ -247,7 +254,7 @@
                         {{ $book['title'] }}
                     </p>
                     <p class="font-['Work_Sans',sans-serif] font-normal text-[12px] text-[#8A9490] mt-0.5">
-                        {{ $book['subject'] }}
+                        {{ $book['type'] ?? 'Purchased ' . $book['purchased_at'] }}
                     </p>
                 </div>
 
@@ -261,7 +268,9 @@
                     </div>
                 </div>
 
-                <button class="w-full bg-[#216C22] text-white font-['Work_Sans',sans-serif] font-semibold text-[13px] leading-[18.2px] tracking-normal py-2.5 rounded-full hover:bg-green-900 transition">
+                <button type="button"
+                   @if($book['slug']) onclick="openBookModal('{{ route('books.show', $book['slug']) }}?embed=1')" @endif
+                   class="w-full bg-[#216C22] text-white font-['Work_Sans',sans-serif] font-semibold text-[13px] leading-[18.2px] tracking-normal py-2.5 rounded-full hover:bg-green-900 transition">
                     Open Book
                 </button>
 
@@ -270,7 +279,31 @@
 
         @endforeach
     </div>
+    @endif
 
 </div>
+
+{{-- Book reader modal --}}
+<div id="book-modal" class="hidden fixed inset-0 z-[999] bg-black/70 flex items-center justify-center p-4">
+    <div class="relative w-full h-full max-w-5xl max-h-[90vh] bg-[#1B1C1C] rounded-2xl overflow-hidden">
+        <button type="button" onclick="closeBookModal()"
+            class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-lg">
+            &times;
+        </button>
+        <iframe id="book-modal-iframe" src="" class="w-full h-full border-0"></iframe>
+    </div>
+</div>
+
+<script>
+    function openBookModal(url) {
+        document.getElementById('book-modal-iframe').src = url;
+        document.getElementById('book-modal').classList.remove('hidden');
+    }
+
+    function closeBookModal() {
+        document.getElementById('book-modal').classList.add('hidden');
+        document.getElementById('book-modal-iframe').src = '';
+    }
+</script>
 
 </div>

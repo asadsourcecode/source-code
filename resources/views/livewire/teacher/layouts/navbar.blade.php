@@ -7,6 +7,7 @@
             $links = [
                 ['label' => 'Dashboard',      'route' => 'teacher.dashboard'],
                 ['label' => 'Schedule',       'route' => 'teacher.weekly-schedule'],
+                ['label' => 'My Students',    'route' => 'teacher.students'],
                 ['label' => 'Announcements',  'route' => 'teacher.announcements'],
                 ['label' => 'My Books',       'route' => 'teacher.books'],
             ];

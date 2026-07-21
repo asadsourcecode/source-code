@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BookPageImageController;
+use App\Http\Controllers\BookReaderController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +25,10 @@ Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
 Route::get('/pricing/preview', [PageController::class, 'pricingPreview'])->name('pricing.preview');
 Route::get('/account', [PageController::class, 'account'])->middleware('auth')->name('account');
 Route::get('/cart', [PageController::class, 'cart'])->name('cart');
+Route::post('/checkout', [OrderController::class, 'store'])->middleware('auth')->name('checkout');
 Route::get('/product/{slug}', [PageController::class, 'product'])->name('product.show');
+Route::get('/books/{product:slug}', [BookReaderController::class, 'show'])->middleware('auth')->name('books.show');
+Route::patch('/books/{product:slug}/progress', [BookReaderController::class, 'updateProgress'])->middleware('auth')->name('books.progress');
+Route::get('/book-pages/{page}/image', [BookPageImageController::class, 'show'])->middleware('auth')->name('books.page-image');
 Route::get('/package/{id}', [PageController::class, 'package'])->name('package.show');
 Route::get('/pages/{slug}', [PageController::class, 'show'])->name('page.show');
